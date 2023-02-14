@@ -1,0 +1,64 @@
+.card-footer {
+  display: flex;
+  justify-content: center;
+}
+form {
+  position: absolute;
+  top: 25%;
+  bottom: 0px;
+  left: 23%;
+}
+.errmsg {
+  color: red;
+}
+.card-footer button {
+  margin: 20px;
+}
+.input {
+  height: 30px;
+  width: 300px;
+  margin: 8px;
+  
+}
+#password{
+  width: 680px;
+}
+#container {
+  width: 800px;
+}
+.card {
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+form .form-group{
+display: flex;
+flex-direction: column;
+}
+#passstrength{
+  height: 30px;
+position: absolute;
+right: 30px;
+  width: 400px;
+}
+.form-group{
+  width: 500px;
+}
+#errormsg{
+width: 500px;
+text-align: left;
+}
+#gender{
+  display: flex;
+
+}
+#gender div{
+margin: 8px 20px;
+}
+#address{
+  width: 700px;
+}
+#genderwrap{
+  margin-top: 9px;
+}
+#country{
+  height: 34px;
+}

@@ -1,0 +1,15 @@
+.footerContainer{
+    background-color:rgb(255, 255, 255);
+    height: 250px;
+  }
+  .title h4{
+    margin: 10px 75px;
+    font-weight: 600;
+  }
+  .footer a{
+    margin: 10px 105px;
+  }
+  .footer .div3{
+  position: relative;
+  left: 45px;
+  }

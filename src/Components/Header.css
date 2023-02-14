@@ -1,0 +1,33 @@
+.session {
+  display: flex;
+}
+.session span {
+  margin: 10px;
+}
+#nav {
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+}
+.Navbar .Navlink {
+  margin: 10px;
+  text-decoration: none;
+  color: black;
+}
+#checkout {
+  width: 100px;
+  height: 40px;
+  color: white;
+  background-color: blue;
+  border-radius: 5px;
+}
+#checkout,
+#total {
+  position: relative;
+  left: 252px;
+}
+#total {
+  position: relative;
+  left: 230px;
+}

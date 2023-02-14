@@ -1,0 +1,21 @@
+.card-footer {
+  display: flex;
+  justify-content: center;
+}
+form {
+  position: absolute;
+  /* top: 50%; */
+  left: 5%;
+  margin-top: 200px;
+ 
+}
+.errmsg {
+  color: red;
+}
+#new{
+ height: 37px;
+ margin-top: 19px;
+}
+#table{
+  right: 140px;
+}
