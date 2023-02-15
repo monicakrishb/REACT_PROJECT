@@ -1,9 +1,8 @@
 import { render, screen } from "@testing-library/react";
 
 import Home from "./Components/Home";
-import Login from "./Components/pages/Login";
-
-import Header from "./Components/Header";
+import { Provider } from "react-redux";
+import { MemoryRouter } from "react-router-dom";
 
 jest.mock("react-router-dom", () => {
   // Require the original module to not be mocked...
@@ -25,24 +24,12 @@ test("Email field should have label", () => {});
 test("validate function should fail in the incorrect input", () => {
   const text = "text";
 });
-// test('btn should be enable for empty password',()=>{
-//   const{getByLabelText,getByRole}=render(<Login/>);
-//   const btn=getByRole('button',{name:'submit'})
-//   expect(btn).toHaveAttribute('disabled')
-// })
-// test('renders two buttons', async () => {
-//   render(<Router>(<Login />)</Router>);
-//   const items = await screen.findAllByRole('button')
-//   expect(items).toHaveLength(3)
-// })
-// test("is Your carts is empty inside the h6 tag", () => {
-//   render(<Header />);
-//   const titleElement = screen.getByText(/Your carts is empty/i);
-//   /* I want to check titleElement as h1 tag */
-//   expect(titleElement);
-// });
 test("should render Home component", () => {
-  render(<Home />);
+  render(
+    <MemoryRouter>
+      <Home />
+    </MemoryRouter>
+  );
   const todoElement = screen.getByTestId("todo-1");
   expect(todoElement).toBeInTheDocument();
   expect(todoElement).toHaveTextContent("Trending Books");
