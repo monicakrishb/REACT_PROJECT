@@ -1,9 +1,11 @@
 import React from "react";
 import "./Register.css";
+import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import StrengthMeter from "./StrengthMeter";
+
 const Register = () => {
   const [id, idchange] = useState("");
   const [name, namechange] = useState("");
@@ -102,24 +104,32 @@ const Register = () => {
     let regobj = { id, name, password, email, phone, country, address, gender };
     if (IsValidate()) {
       // console.log(regobj);
-      fetch("  http://localhost:8000/user", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(regobj),
-      })
+      axios
+        .post("http://localhost:8000/user", regobj)
         .then((res) => {
-          toast.success("Registered Successfully.");
-          navigate("/login");
+          toast.success("registered successfully");
         })
         .catch((err) => {
-          toast.error("Failed:" + err.message);
+          toast.error("Failed" + err.message);
         });
+      // fetch("  http://localhost:8000/user", {
+      //   method: "POST",
+      //   headers: { "content-type": "application/json" },
+      //   body: JSON.stringify(regobj),
+      // })
+      // .then((res) => {
+      //   toast.success("Registered Successfully.");
+      //   navigate("/login");
+      // })
+      // .catch((err) => {
+      //   toast.error("Failed:" + err.message);
+      // });
     }
   };
 
   return (
-    <div className="offset-lg-3 cl-lg-6">
-      <form className="container" id="container" onSubmit={handlesubmit}>
+    <div className="offset-lg-3 cl-lg-6 register">
+      <form className="container" id="container" onSubmit={handlesubmit}data-testid="form">
         <div className="card">
           <div className="card-header">
             <h5>User Registeration</h5>
@@ -158,10 +168,12 @@ const Register = () => {
                   </label>
                   <input
                     type="password"
+                    data-testid="password-test"
                     id="password"
                     name="password"
                     className="form-control  input"
                     onChange={onChange}
+                    value={password}
                     required
                   />
                   <small id="errormsg">
@@ -169,32 +181,20 @@ const Register = () => {
                   </small>
                   <StrengthMeter
                     id="passstrength"
-                    password={pwdInput.password}
+                    password={password}
                     actions={initPwdInput}
                   />
-
-                  {/* </label> */}
                 </div>
               </div>
-              {/* <div className="col-lg-6">
-                <div className="form-group">
-                  <label>
-                    Full Name<span className="errmsg">*</span>
-                  </label>
-                  <input
-                    value={name}
-                    onChange={(e) => namechange(e.target.value)}
-                    className="form-control  input"
-                  ></input>
-                </div>
-              </div> */}
               <div className="col-lg-6">
                 <div className="form-group">
                   <label>
                     Email<span className="errmsg">*</span>
                   </label>
                   <input
+                    type="text"
                     value={email}
+                    data-testid="email-test"
                     onChange={(e) => emailchange(e.target.value)}
                     className="form-control input"
                     required
@@ -275,12 +275,9 @@ const Register = () => {
           <div className="card-footer">
             {isStrong === "strong" && (
               <button type="submit" className="btn btn-dark">
-                {" "}
-                Register{" "}
+                Register
               </button>
             )}
-
-            {/* <a className="btn btn-dark">Back</a> */}
           </div>
         </div>
         <br />
