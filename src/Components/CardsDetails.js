@@ -126,17 +126,17 @@ const CardsDetails = () => {
                           </p>
                           <p>
                             <strong>Remove :</strong>
-                      
                             <span
-                              class="material-symbols-outlined"
+                              id="remove"
+                              className="material-symbols-outlined"
                               onClick={() => dlt(element.id)}
                               style={{
-                                color: "red",
+                                color: "blue",
                                 fontSize: 20,
                                 cursor: "pointer",
                               }}
                             >
-                              <span class="material-symbols-outlined">
+                              <span className="material-symbols-outlined">
                                 delete
                               </span>
                             </span>{" "}
@@ -146,7 +146,7 @@ const CardsDetails = () => {
                     </Table>
                   </div>
                   <NavLink to="/productpage" id="back">
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                       arrow_back_ios
                     </span>
                     Back to all products
@@ -157,7 +157,6 @@ const CardsDetails = () => {
           </div>
         </section>
       </div>
-      
     </>
   );
 };
