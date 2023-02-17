@@ -143,6 +143,8 @@ const Register = () => {
                   </label>
                   <input
                     value={id}
+                    data-testId="username-test"
+                    tye="text"
                     onChange={(e) => idchange(e.target.value, onChange)}
                     className="form-control input"
                     required
@@ -156,6 +158,8 @@ const Register = () => {
                   </label>
                   <input
                     value={name}
+                    type="text"
+                    data-testId="name-test"
                     onChange={(e) => namechange(e.target.value)}
                     className="form-control  input"
                   ></input>
