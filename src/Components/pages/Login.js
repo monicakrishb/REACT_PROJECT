@@ -26,7 +26,7 @@ const Login = () => {
               if (response.password === password) {
                 toast.success("Success");
                 sessionStorage.setItem("username", username);
-
+                sessionStorage.setItem("useremail",email)
                 usenavigate("/");
               } else {
                 toast.error("Please enter valid credentials");
@@ -53,7 +53,7 @@ const Login = () => {
   return (
     <div className="offset-lg-3 col-lg-6" id="table">
       <form onSubmit={ProceedLogin} className="container">
-        <div className="card">
+        <div className="card login">
           <div className="card-header">
             <h2>User Login</h2>
           </div>
@@ -64,7 +64,8 @@ const Login = () => {
               </label>
               <input
                 value={username}
-                onChange={(e) => usernameupdate(e.target.value)}placeholder
+                data-testId="username-test"
+                onChange={(e) => usernameupdate(e.target.value)}
                 className="form-control"
               ></input>
             </div>
@@ -77,6 +78,7 @@ const Login = () => {
                 onChange={(e) => passwordupdate(e.target.value)}
                 className="form-control"
                 placeholder="Enter Password"
+                autoComplete="off"
               ></input>
             </div>
             <div className="form-group">

@@ -8,10 +8,12 @@ import { ADD } from "./actions/action";
 
 const Cards = () => {
   const [data, setData] = useState(Cardsdata);
+  // console.log(data);
 
   const dispatch = useDispatch();
 
   const send = (e) => {
+    // console.log(e);
     dispatch(ADD(e));
   };
 
@@ -36,14 +38,14 @@ const Cards = () => {
                 <Card.Body>
                   <Card.Title>{element.rname}</Card.Title>
                   <Card.Text>Price : ₹ {element.price}</Card.Text>
-
-                  <div className="button_div d-flex justify-content-center">
+                  <div className="button_div d-flex justify-content-center text-center">
+                    {" "}
                     <Button
                       variant="primary"
                       onClick={() => send(element)}
                       className="col-lg-12"
                     >
-                      <p>Add to Cart</p>
+                      <p id="center">Add to Cart</p>
                     </Button>
                   </div>
                 </Card.Body>

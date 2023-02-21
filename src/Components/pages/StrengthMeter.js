@@ -41,6 +41,7 @@ const StrengthMeter = (props) => {
     }
   };
   {
+    
     props.actions(initPwdChecker().val);
   }
   return (

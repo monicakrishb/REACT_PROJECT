@@ -2,12 +2,7 @@
   display: flex;
   justify-content: center;
 }
-form {
-  position: absolute;
-  top: 25%;
-  bottom: 0px;
-  left: 23%;
-}
+
 .errmsg {
   color: red;
 }
@@ -18,47 +13,49 @@ form {
   height: 30px;
   width: 300px;
   margin: 8px;
-  
 }
-#password{
+#password {
   width: 680px;
 }
 #container {
   width: 800px;
+  position: absolute;
+  top: 1px;
+  left: 23%;
 }
+
 .card {
   box-shadow: 10px 10px 5px #aaaaaa;
 }
-form .form-group{
-display: flex;
-flex-direction: column;
+form .form-group {
+  display: flex;
+  flex-direction: column;
 }
-#passstrength{
+#passstrength {
   height: 30px;
-position: absolute;
-right: 30px;
+  position: absolute;
+  right: 30px;
   width: 400px;
 }
-.form-group{
+.form-group {
   width: 500px;
 }
-#errormsg{
-width: 500px;
-text-align: left;
+#errormsg {
+  width: 500px;
+  text-align: left;
 }
-#gender{
+#gender {
   display: flex;
-
 }
-#gender div{
-margin: 8px 20px;
+#gender div {
+  margin: 8px 20px;
 }
-#address{
+#address {
   width: 700px;
 }
-#genderwrap{
+#genderwrap {
   margin-top: 9px;
 }
-#country{
+#country {
   height: 34px;
 }

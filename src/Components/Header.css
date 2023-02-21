@@ -8,7 +8,8 @@
   height: 70px;
   width: 100%;
   position: fixed;
-  z-index: 2;
+  z-index: 4;
+  top: 0;
 }
 .Navbar .Navlink {
   margin: 10px;
@@ -22,12 +23,11 @@
   background-color: blue;
   border-radius: 5px;
 }
-#checkout,
 #total {
   position: relative;
-  left: 252px;
+  left: 200px;
 }
-#total {
-  position: relative;
-  left: 230px;
+.Navlink{
+ display: flex;
+
 }

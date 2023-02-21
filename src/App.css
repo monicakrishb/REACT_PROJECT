@@ -41,3 +41,12 @@
     top: 270px;
     right: 10px;
   }
+  #remove{
+    position: relative;
+    bottom: 25px;
+    left:80px
+  }
+  #center{
+    position: relative;
+    top: 7px;
+  }

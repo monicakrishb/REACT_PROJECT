@@ -4,12 +4,10 @@ import Container from "react-bootstrap/Container";
 import Badge from "@mui/material/Badge";
 import Nav from "react-bootstrap/Nav";
 import Menu from "@mui/material/Menu";
-import Table from "react-bootstrap/esm/Table";
-import "./Header.css";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink ,Link,useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Table from "react-bootstrap/esm/Table";
 import { DLT } from "./actions/action";
-import { Link } from "react-router-dom";
 
 const Header = () => {
   const [price, setPrice] = useState(0);
@@ -44,23 +42,21 @@ const Header = () => {
   useEffect(() => {
     total();
   }, [total]);
+  const navigate = useNavigate();
+  const value = sessionStorage.getItem("username");
 
-  const navigate=useNavigate()
-  const value=sessionStorage.getItem("username");
 
-
-  const handleClickss=()=>{
-    
- sessionStorage.clear()
- setTimeout(() => {
- navigate('/')  
- }, (500));
- 
+  const handleClickss = () => {
+    sessionStorage.clear();
+    getdata = [];
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
   };
 
   return (
     <>
-      <Navbar
+       <Navbar
         className="nav navbar-light bg-light shadow p-3 mb-5 bg-white rounded"
         id="nav"
       >
@@ -71,14 +67,20 @@ const Header = () => {
             </Link>
           </Nav>
           <div className="Navbar">
-            {value===null ? (<Link to="/login" className="Navlink">
-              Login
-            </Link>) : <Link onClick={handleClickss}>Logout</Link>}
-             {value===null ? (
-            <Link to="/signup" className="Navlink">
-              Signup
-            </Link>):""
-}
+            {value === null ? (
+              <Link to="/login" className="Navlink">
+                Login
+              </Link>
+            ) : (
+              <Link onClick={handleClickss}>Logout</Link>
+            )}
+            {value === null ? (
+              <Link to="/signup" className="Navlink">
+                Signup
+              </Link>
+            ) : (
+              ""
+            )}
             <Badge
               badgeContent={getdata.length}
               color="primary"
@@ -89,7 +91,7 @@ const Header = () => {
               onClick={handleClick}
             >
               <i
-                class="fa fa-shopping-cart"
+                className="fa fa-shopping-cart"
                 style={{ fontSize: 25, cursor: "pointer" }}
               ></i>
             </Badge>
@@ -114,7 +116,7 @@ const Header = () => {
                 <thead>
                   <tr>
                     <th>Photo</th>
-                    <th>Book Name</th>
+                    <th>Restaurant Name</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -135,9 +137,10 @@ const Header = () => {
                             <p>{e.rname}</p>
                             <p>Price : ₹{e.price}</p>
                             <p>Quantity : {e.qnty}</p>
+
                             <p
                               style={{
-                                color: "red",
+                                color: "blue",
                                 fontSize: 18,
                                 cursor: "pointer",
                               }}
@@ -150,23 +153,25 @@ const Header = () => {
                           <td
                             className="mt-5"
                             style={{
-                              color: "red",
+                              color: "blue",
                               fontSize: 18,
                               cursor: "pointer",
                             }}
                             onClick={() => dlt(e.id)}
                           >
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                               delete
                             </span>
+                            
                           </td>
                         </tr>
                       </>
                     );
                   })}
-                  <p className="text-center" id="total">Total :₹ {price}</p>
+                   <p className="text-center" id="total">
+                   Total :₹ {price}
+                  </p>
                 </tbody>
-           <div >  <button id="checkout" >Checkout</button></div> 
               </Table>
             </div>
           ) : (
@@ -181,19 +186,21 @@ const Header = () => {
                   position: "absolute",
                   top: 2,
                   right: 20,
-                  fontSize: 18,
+                  fontSize: 23,
                   cursor: "pointer",
                 }}
               ></i>
-              <p style={{ fontSize: 18 }}>
-                <h6>Your carts is empty</h6>
-              </p>
+              <p style={{ fontSize: 18 }}>Your carts is empty</p>
+              <img
+                src="./cart.gif"
+                alt=""
+                className="emptycart_img"
+                style={{ width: "5rem", padding: 10 }}
+              />
             </div>
           )}
         </Menu>
-    
       </Navbar>
-      
     </>
   );
 };

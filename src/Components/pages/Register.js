@@ -171,7 +171,7 @@ const Register = () => {
                     Password<span className="errmsg">*</span>
                   </label>
                   <input
-                    type="password"
+                    // type="password"
                     data-testid="password-test"
                     id="password"
                     name="password"
@@ -212,6 +212,7 @@ const Register = () => {
                   </label>
                   <input
                     value={phone}
+                    data-testid="phone-test"
                     onChange={(e) => phonechange(e.target.value)}
                     className="form-control input"
                     required

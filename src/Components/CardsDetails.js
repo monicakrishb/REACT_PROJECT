@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { DLT, ADD, REMOVE } from "./actions/action";
+import { NavLink } from "react-router-dom";
 
 const CardsDetails = () => {
   const [data, setData] = useState([]);
+  // console.log(data);
 
   const { id } = useParams();
+  // console.log(id);
 
   const history = useNavigate();
 
   const dispatch = useDispatch();
 
-  const getdata = useSelector((state) => state.cartreducer.carts);
+  const getdata = useSelector((state) => state.Cartreducer.carts);
+  // console.log(getdata);
 
   const compare = () => {
     let comparedata = getdata.filter((e) => {
@@ -22,7 +26,10 @@ const CardsDetails = () => {
     setData(comparedata);
   };
 
+  // add data
+
   const send = (e) => {
+    // console.log(e);
     dispatch(ADD(e));
   };
 
@@ -31,6 +38,7 @@ const CardsDetails = () => {
     history("/");
   };
 
+  // remove one
   const remove = (item) => {
     dispatch(REMOVE(item));
   };
@@ -41,20 +49,16 @@ const CardsDetails = () => {
 
   return (
     <>
-      <br />
-      <br />
-      <br />
-      <br />
       <div className="container mt-2">
-        <h2 className="text-center">Items Details Page</h2>
+        <h2 className="text-center">Iteams Details Page</h2>
 
         <section className="container mt-3">
           <div className="iteamsdetails">
-            {data.map((element) => {
+            {data.map((ele) => {
               return (
                 <>
                   <div className="items_img">
-                    <img src={element.imgdata} alt="" />
+                    <img src={ele.imgdata} alt="" />
                   </div>
 
                   <div className="details">
@@ -63,20 +67,19 @@ const CardsDetails = () => {
                         <td>
                           <p>
                             {" "}
-                            <strong>Book</strong> : {element.rname}
+                            <strong>Book</strong> : {ele.rname}
                           </p>
                           <p>
                             {" "}
-                            <strong>Price</strong> : ₹{element.price}
+                            <strong>Price</strong> : ₹{ele.price}
                           </p>
                           <p>
                             {" "}
-                            <strong>Author</strong> : {element.address}
+                            <strong>Author</strong> : {ele.address}
                           </p>
                           <p>
                             {" "}
-                            <strong>Total</strong> :₹{" "}
-                            {element.price * element.qnty}
+                            <strong>Total</strong> :₹ {ele.price * ele.qnty}
                           </p>
                           <div
                             className="mt-5 d-flex justify-content-between align-items-center"
@@ -90,17 +93,17 @@ const CardsDetails = () => {
                             <span
                               style={{ fontSize: 24 }}
                               onClick={
-                                element.qnty <= 1
-                                  ? () => dlt(element.id)
-                                  : () => remove(element)
+                                ele.qnty <= 1
+                                  ? () => dlt(ele.id)
+                                  : () => remove(ele)
                               }
                             >
                               -
                             </span>
-                            <span style={{ fontSize: 22 }}>{element.qnty}</span>
+                            <span style={{ fontSize: 22 }}>{ele.qnty}</span>
                             <span
                               style={{ fontSize: 24 }}
-                              onClick={() => send(element)}
+                              onClick={() => send(ele)}
                             >
                               +
                             </span>
@@ -117,19 +120,19 @@ const CardsDetails = () => {
                                 borderRadius: "5px",
                               }}
                             >
-                              {element.rating} ★{" "}
+                              {ele.rating} ★{" "}
                             </span>
                           </p>
                           <p>
                             <strong>Order Review :</strong>{" "}
-                            <span>{element.somedata} </span>
+                            <span>{ele.somedata} </span>
                           </p>
                           <p>
-                            <strong>Remove :</strong>
+                            <strong>Remove :</strong>{" "}
                             <span
                               id="remove"
                               className="material-symbols-outlined"
-                              onClick={() => dlt(element.id)}
+                              onClick={() => dlt(ele.id)}
                               style={{
                                 color: "blue",
                                 fontSize: 20,
@@ -137,8 +140,9 @@ const CardsDetails = () => {
                               }}
                             >
                               <span className="material-symbols-outlined">
+                                {" "}
                                 delete
-                              </span>
+                              </span>{" "}
                             </span>{" "}
                           </p>
                         </td>
@@ -147,9 +151,10 @@ const CardsDetails = () => {
                   </div>
                   <NavLink to="/productpage" id="back">
                     <span className="material-symbols-outlined">
-                      arrow_back_ios
-                    </span>
-                    Back to all products
+                      {" "}
+                      arrow_back_ios{" "}
+                    </span>{" "}
+                    Back to all products{" "}
                   </NavLink>
                 </>
               );
