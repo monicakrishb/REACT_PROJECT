@@ -4,12 +4,31 @@ import Container from "react-bootstrap/Container";
 import Badge from "@mui/material/Badge";
 import Nav from "react-bootstrap/Nav";
 import Menu from "@mui/material/Menu";
-import { NavLink ,Link,useNavigate} from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+
 import Table from "react-bootstrap/esm/Table";
+import "./Header.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { DLT } from "./actions/action";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Header = () => {
+  const [productdata, setProductdata] = useState([]);
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = async () => {
+    const response = await axios.get("http://localhost:8000/cartDetails");
+    setProductdata(response.data);
+    console.log("value", response.data);
+  };
+
+  const store = sessionStorage.getItem("useremail");
+  const [cartlength, setCartlength] = useState("");
+
   const [price, setPrice] = useState(0);
   // console.log(price);
 
@@ -19,6 +38,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = useState(null);
+  
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -27,8 +47,23 @@ const Header = () => {
     setAnchorEl(null);
   };
 
+
+  const [anchorEl1, setAnchorEl1] = useState(null);
+  
+  const open1 = Boolean(anchorEl1);
+  const handleClick1 = (event) => {
+    setAnchorEl1(event.currentTarget);
+  };
+  const handleClose1 = () => {
+    setAnchorEl1(null);
+  };
+
   const dlt = (id) => {
-    dispatch(DLT(id));
+    // dispatch(DLT(id));
+    axios.delete("http://localhost:8000/cartDetails/" + id);
+    setTimeout(() => {
+      loadData();
+    }, 500);
   };
 
   const total = () => {
@@ -42,9 +77,9 @@ const Header = () => {
   useEffect(() => {
     total();
   }, [total]);
+
   const navigate = useNavigate();
   const value = sessionStorage.getItem("username");
-
 
   const handleClickss = () => {
     sessionStorage.clear();
@@ -54,9 +89,66 @@ const Header = () => {
     }, 500);
   };
 
+  const session = sessionStorage.getItem("useremail");
+
+  const Total_Price = productdata
+    .filter((e) => {
+      if (e.useremail === store) {
+        return e;
+      }
+    })
+    .reduce((a, b) => a + b.price * b.qnty, 0);
+  const storeemail = sessionStorage.getItem("useremail");
+  const storeuser = sessionStorage.getItem("username");
+  function Addqty(element) {
+    axios.put("http://localhost:8000/cartDetails/" + element.id, {
+      id: element.id,
+      rname: element.rname,
+      imgdata: element.imgdata,
+      address: element.address,
+      delimg: element.delimg,
+      somedata: element.somedata,
+      price: element.price,
+      rating: element.rating,
+      arrimg: element.arrimg,
+      qnty: 1 + element.qnty,
+      useremail: storeemail,
+      username: storeuser,
+    });
+    setTimeout(() => {
+      loadData();
+    }, 400);
+  }
+
+  function Subqty(element) {
+    axios.put("http://localhost:8000/cartDetails/" + element.id, {
+      id: element.id,
+      rname: element.rname,
+      imgdata: element.imgdata,
+      address: element.address,
+      delimg: element.delimg,
+      somedata: element.somedata,
+      price: element.price,
+      rating: element.rating,
+      arrimg: element.arrimg,
+      qnty: element.qnty - 1,
+      useremail: storeemail,
+      username: storeuser,
+    });
+    setTimeout(() => {
+      loadData();
+    }, 400);
+  }
+
+  const bag = productdata.filter((e) => {
+    if (store == e.useremail) {
+      return e;
+    }
+  });
+
   return (
     <>
-       <Navbar
+      <Navbar
         className="nav navbar-light bg-light shadow p-3 mb-5 bg-white rounded"
         id="nav"
       >
@@ -72,7 +164,9 @@ const Header = () => {
                 Login
               </Link>
             ) : (
-              <Link onClick={handleClickss}>Logout</Link>
+              <Link onClick={handleClickss} id="log">
+                Logout{" "}
+              </Link>
             )}
             {value === null ? (
               <Link to="/signup" className="Navlink">
@@ -82,7 +176,8 @@ const Header = () => {
               ""
             )}
             <Badge
-              badgeContent={getdata.length}
+              className="cart"
+              badgeContent={bag.length}
               color="primary"
               id="basic-button"
               aria-controls={open ? "basic-menu" : undefined}
@@ -91,9 +186,23 @@ const Header = () => {
               onClick={handleClick}
             >
               <i
-                className="fa fa-shopping-cart"
+                className="fa fa-shopping-cart "
                 style={{ fontSize: 25, cursor: "pointer" }}
               ></i>
+            </Badge>
+            <Badge
+              className="orders"
+              badgeContent={bag.length}
+              color="primary"
+              id="basic-button"
+              aria-controls={open1 ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open1 ? "true" : undefined}
+              onClick={handleClick1}
+
+            >
+              
+              Orders
             </Badge>
           </div>
         </Container>
@@ -107,7 +216,7 @@ const Header = () => {
             "aria-labelledby": "basic-button",
           }}
         >
-          {getdata.length ? (
+          {productdata.length ? (
             <div
               className="card_details"
               style={{ width: "24rem", padding: 10 }}
@@ -116,16 +225,21 @@ const Header = () => {
                 <thead>
                   <tr>
                     <th>Photo</th>
-                    <th>Restaurant Name</th>
+                    <th>Book Name</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {getdata.map((e) => {
-                    return (
+                  {productdata
+                    .filter((e) => {
+                      if (store === e.useremail) {
+                        return e;
+                      }
+                    })
+                    .map((e) => (
                       <>
                         <tr>
-                          <td>
-                            <NavLink to={`/cart/${e.id}`} onClick={handleClose}>
+                          <td key={e.id}>
+                            <NavLink onClick={handleClose}>
                               <img
                                 src={e.imgdata}
                                 style={{ width: "5rem", height: "5rem" }}
@@ -136,8 +250,21 @@ const Header = () => {
                           <td>
                             <p>{e.rname}</p>
                             <p>Price : ₹{e.price}</p>
-                            <p>Quantity : {e.qnty}</p>
-
+                            <button
+                              onClick={e.qnty == 1 ? 1 : () => Subqty(e)}
+                              className="btn"
+                            >
+                              -
+                            </button>
+                            <span>Quantity : {e.qnty}</span>
+                            <button
+                              onClick={() => {
+                                Addqty(e);
+                              }}
+                              className="btn"
+                            >
+                              +
+                            </button>
                             <p
                               style={{
                                 color: "blue",
@@ -162,16 +289,20 @@ const Header = () => {
                             <span className="material-symbols-outlined">
                               delete
                             </span>
-                            
                           </td>
                         </tr>
                       </>
-                    );
-                  })}
-                   <p className="text-center" id="total">
-                   Total :₹ {price}
+                    ))}
+                  <p className="text-center" id="total">
+                    Total :₹ {Total_Price}
                   </p>
                 </tbody>
+                <div>
+                  {" "}
+                  {/* <button id="checkout" onClick={navigate("/")}>
+                    Checkout
+                  </button> */}
+                </div>
               </Table>
             </div>
           ) : (
@@ -186,20 +317,95 @@ const Header = () => {
                   position: "absolute",
                   top: 2,
                   right: 20,
-                  fontSize: 23,
+                  fontSize: 18,
                   cursor: "pointer",
                 }}
               ></i>
-              <p style={{ fontSize: 18 }}>Your carts is empty</p>
-              <img
-                src="./cart.gif"
-                alt=""
-                className="emptycart_img"
-                style={{ width: "5rem", padding: 10 }}
-              />
+              <p style={{ fontSize: 18 }}></p>
+              <h6>Your carts is empty</h6>
             </div>
           )}
         </Menu>
+ 
+        <Menu
+          id="basic-menu"
+          anchorEl1={anchorEl1}
+          open={open1}
+          onClose={handleClose1}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          { (
+            <div
+              className="card_details"
+              style={{ width: "24rem", padding: 10 }}
+            >
+              <Table>
+                <thead>
+                  <tr>
+                    <th>Product image</th>
+                    <th>Product name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {productdata
+                    .filter((e) => {
+                      if (store === e.useremail) {
+                        return e;
+                      }
+                    })
+                    .map((e) => (
+                      <>
+                        <tr>
+                          <td key={e.id}>
+                            <NavLink onClick={handleClose1}>
+                              <img
+                                src={e.imgdata}
+                                style={{ width: "5rem", height: "5rem" }}
+                                alt=""
+                              />
+                            </NavLink>
+                          </td>
+                          <td>
+                            <p>{e.rname}</p>
+                            <p>Price : ₹{e.price}</p>
+
+                            <span><strong>Orderplaced on</strong></span>
+                            <span><strong>Delivered to</strong></span>
+
+                            
+                          </td>
+
+                          <td
+                           
+                            style={{
+                              color: "red",
+                              fontSize: 18,
+                              cursor: "pointer",
+                            }}
+                            onClick={() => dlt(e.id)}
+                          >
+                            <span  id="cancel">
+                              delete_sweep
+                            </span>
+                            cancel
+                          </td>
+                        </tr>
+                      </>
+                    ))}
+                  <p  id="total">
+                    Total :₹ {Total_Price}
+                  </p>
+                </tbody>
+                <div>
+                  
+                 </div>
+              </Table>
+            </div>
+          ) 
+          }
+        </Menu>  
       </Navbar>
     </>
   );
