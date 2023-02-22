@@ -12,6 +12,8 @@ const Profile = () => {
   let store = sessionStorage.getItem("useremail");
   console.log(store);
 
+  
+
   const loadData = async () => {
     const response = await Axios.get(
       `http://localhost:8000/user?email=${store}`
@@ -80,7 +82,6 @@ const Profile = () => {
           <img
             id="png"
             src="https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"
-            // src={instanceimg}
           />
         </div>
         {sessionStorage.getItem("useremail") == store ? (
@@ -134,7 +135,7 @@ const Profile = () => {
 
                 <div>
                   <button onClick={() => navigate("/")} className="editbtn">
-                    Go Back
+                     Back
                   </button>
                 </div>
               </div>
@@ -152,7 +153,7 @@ const Profile = () => {
                   height: "50px",
                 }}
               >
-                Go Homepage
+             Home
               </button>
             </div>
           </div>
