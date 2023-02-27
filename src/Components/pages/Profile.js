@@ -79,27 +79,23 @@ const Profile = () => {
           <br />
           <br />
           <br />
-          <img
-            id="png"
-            src="https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"
-          />
         </div>
         {sessionStorage.getItem("useremail") == store ? (
           <div className="form">
             <form>
               <div className="card" id="formBox">
                 <div className="label">
-                  <label>User Name</label>
+                  <label className="lab">FirstName</label>
                   <input
                     type="text"
-                    value={instanceusername}
+                    value={instanceid}
                     data-testId="instanceuser"
                     onChange={(e) => setinstanceuser(e.target.value)}
                     required
                   />
                 </div>
                 <div className="label">
-                  <label>Password</label>
+                  <label className="lab">Password</label>
                   <input
                     type="text"
                     value={instancepassword}
@@ -109,7 +105,7 @@ const Profile = () => {
                   />
                 </div>
                 <div className="label">
-                  <label>Phone</label>
+                  <label className="lab">Phone</label>
                   <input
                     type="text"
                     data-testId="instancephone"
@@ -120,9 +116,9 @@ const Profile = () => {
                 </div>
 
                 <div className="label">
-                  <label>Address</label>
+                  <label className="lab">Address</label>
                   <input
-                    id="address"
+                    id="sample"
                     type="text"
                     data-testId="instanceaddress"
                     value={instanceaddress}
@@ -138,6 +134,12 @@ const Profile = () => {
                   >
                     Submit changes
                   </button>
+                  <br />
+                  <br />
+
+                  <br />
+
+                  <br />
                 </div>
               </div>
             </form>
