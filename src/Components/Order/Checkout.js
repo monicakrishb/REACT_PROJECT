@@ -178,7 +178,7 @@ function Checkout() {
               })
               .map((val) => (
                 <>
-                  <strong>{val.name}</strong>
+                  <strong>{val.id+" "+val.name}</strong>
                   <h6>{val.address}</h6>
                   <h6>{val.country}</h6>
                   <h6>{val.phone}</h6>
