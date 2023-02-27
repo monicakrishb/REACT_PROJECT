@@ -103,6 +103,7 @@ const Header = () => {
       loadData();
     }, 400);
   }
+ 
 
   function Subqty(element) {
     axios.put("http://localhost:8000/cartDetails/" + element.id, {
@@ -129,6 +130,7 @@ const Header = () => {
       return e;
     }
   });
+  
 
   return (
     <>
@@ -174,13 +176,21 @@ const Header = () => {
                 style={{ fontSize: 25, cursor: "pointer" }}
               ></i>
             </Badge>
-            <Link to="/orders" id="order">
+            <Link
+              to="/orders"
+              className="text-decoration-none text-dark"
+              id="order"
+            >
               Orders
             </Link>
-            <Link to="/profile" id="profile">
-            <span class="material-symbols-outlined">
-account_circle
-</span></Link>
+            {/* {value === null ? "":(
+            <Link 
+              to="/profile"
+              className="text-decoration-none text-dark"
+              id="profile"
+            >
+              <span  class="material-symbols-outlined">account_circle</span>
+            </Link>)} */}
           </div>
         </Container>
 
