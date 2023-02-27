@@ -3,6 +3,7 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { validate } from "./loginValidate";
 
 const Login = () => {
   const [username, usernameupdate] = useState("");
@@ -12,21 +13,24 @@ const Login = () => {
 
   const ProceedLogin = (e) => {
     e.preventDefault();
-    if (validate()) {
+    if (validate(username, password)) {
       try {
-        fetch("http://localhost:8000/user/" + username)
+        fetch(`http://localhost:8000/user?email=${username}`)
           .then((res) => {
+            console.log(res);
             return res.json();
           })
           .then((response) => {
-            console.log(response);
+            console.log(response[0].password);
+            console.log(`http://localhost:8000/user?email=${username}`);
+
             if (Object.keys(response).length == 0) {
               toast.error("Please enter valid username");
             } else {
-              if (response.password === password) {
+              if (response[0].password === password) {
                 toast.success("Success");
-                sessionStorage.setItem("username", username);
-                sessionStorage.setItem("useremail",email)
+                sessionStorage.setItem("useremail", username);
+            
                 usenavigate("/");
               } else {
                 toast.error("Please enter valid credentials");
@@ -36,20 +40,22 @@ const Login = () => {
       } catch (err) {
         toast.error("Login Failed due to:" + err.message);
       }
+    } else {
+      toast.warning("Please enter username and password");
     }
   };
-  const validate = () => {
-    let result = true;
-    if (username === "" || username === null) {
-      result = false;
-      toast.warning("Please Enter Username");
-    }
-    if (password === "" || password === null) {
-      result = false;
-      toast.warning("Please Enter Password");
-    }
-    return result;
-  };
+  // const validate = () => {
+  //   let result = true;
+  //   if (username === "" || username === null) {
+  //     result = false;
+  //     toast.warning("Please Enter Username");
+  //   }
+  //   if (password === "" || password === null) {
+  //     result = false;
+  //     toast.warning("Please Enter Password");
+  //   }
+  //   return result;
+  // };
   return (
     <div className="offset-lg-3 col-lg-6" id="table">
       <form onSubmit={ProceedLogin} className="container">
@@ -60,7 +66,7 @@ const Login = () => {
           <div className="card-body">
             <div className="form-group">
               <label>
-                User Name<span className="errmsg">*</span>
+                Email<span className="errmsg">*</span>
               </label>
               <input
                 value={username}
@@ -79,17 +85,6 @@ const Login = () => {
                 className="form-control"
                 placeholder="Enter Password"
                 autoComplete="off"
-              ></input>
-            </div>
-            <div className="form-group">
-              <label>
-               Email<span className="errmsg">*</span>
-              </label>
-              <input
-                value={email}
-                onChange={(e) => emailupdate(e.target.value)}
-                className="form-control"
-                placeholder="Enter email"
               ></input>
             </div>
           </div>
