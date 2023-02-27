@@ -1,11 +1,12 @@
 import Login from "../pages/Login";
 import { fireEvent, render } from "@testing-library/react";
-import { screen, configure } from "@testing-library/react";
-import { BrowserRouter as Router, MemoryRouter } from "react-router-dom";
+import { screen } from "@testing-library/react";
+import { BrowserRouter as MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
+import App from '../../App'
+
 
 const mockedUsedNavigate = jest.fn();
-
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: () => mockedUsedNavigate,
@@ -22,6 +23,7 @@ test("email input field should accept email", async () => {
   const password = screen.getByPlaceholderText("Enter Password");
   expect(password).toHaveAttribute("type", "password");
 });
+
 test("renders two buttons", async () => {
   render(
     <MemoryRouter>

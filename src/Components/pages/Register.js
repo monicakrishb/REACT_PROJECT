@@ -42,6 +42,7 @@ const Register = () => {
       specialSymbol = (password.match(/\W/g) || []).length;
       if (caps < 1) {
         setError("Must add one UPPERCASE letter");
+
         return;
       } else if (small < 1) {
         setError("Must add one lowercase letter");
@@ -87,14 +88,15 @@ const Register = () => {
       isproceed = false;
       errormessage += " Email";
     }
-    if (!isproceed) {
-      toast.warning(errormessage);
-    } else {
-      if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
-      } else {
+    else {
+      if(!email.match("[a-z0-9]+@[a-z]+[.][2,3]")){
         isproceed = false;
         toast.warning("please enter the vaild email");
       }
+
+    if (!isproceed) {
+      toast.warning(errormessage);
+    } 
     }
 
     return isproceed;
@@ -102,8 +104,7 @@ const Register = () => {
   const handlesubmit = (e) => {
     e.preventDefault();
     let regobj = { id, name, password, email, phone, country, address, gender };
-    if (IsValidate()) {
-      // console.log(regobj);
+    if (IsValidate({id:{id},name:{name},password:{password},email:{email}})) {
       axios
         .post("http://localhost:8000/user", regobj)
         .then((res) => {
@@ -112,24 +113,17 @@ const Register = () => {
         .catch((err) => {
           toast.error("Failed" + err.message);
         });
-      // fetch("  http://localhost:8000/user", {
-      //   method: "POST",
-      //   headers: { "content-type": "application/json" },
-      //   body: JSON.stringify(regobj),
-      // })
-      // .then((res) => {
-      //   toast.success("Registered Successfully.");
-      //   navigate("/login");
-      // })
-      // .catch((err) => {
-      //   toast.error("Failed:" + err.message);
-      // });
     }
   };
 
   return (
     <div className="offset-lg-3 cl-lg-6 register">
-      <form className="container" id="container" onSubmit={handlesubmit}data-testid="form">
+      <form
+        className="container"
+        id="container"
+        onSubmit={handlesubmit}
+        data-testid="form"
+      >
         <div className="card">
           <div className="card-header">
             <h5>User Registeration</h5>
@@ -171,7 +165,7 @@ const Register = () => {
                     Password<span className="errmsg">*</span>
                   </label>
                   <input
-                    // type="password"
+                    type="password"
                     data-testid="password-test"
                     id="password"
                     name="password"

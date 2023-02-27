@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
 
-const store = sessionStorage.getItem("username");
+const store = sessionStorage.getItem("useremail");
 var user = " ";
 if (store) {
   user = { login: true };

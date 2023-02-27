@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { DLT, ADD, REMOVE } from "./actions/action";
 import { NavLink } from "react-router-dom";
-
+import Button from "react-bootstrap/Button";
+import axios from "axios";
 const CardsDetails = () => {
   const [data, setData] = useState([]);
   // console.log(data);
@@ -16,149 +16,132 @@ const CardsDetails = () => {
 
   const dispatch = useDispatch();
 
-  const getdata = useSelector((state) => state.Cartreducer.carts);
-  // console.log(getdata);
+  const getdata = useSelector((state) => state.cart.count);
 
-  const compare = () => {
-    let comparedata = getdata.filter((e) => {
-      return e.id == id;
-    });
-    setData(comparedata);
+  const getData = async () => {
+    try {
+      const res = await axios.get("http://localhost:8000/bookDetails");
+      setData(res.data);
+      console.log(res.data);
+    } catch (err) {
+      alert("no action");
+    }
   };
-
-  // add data
-
-  const send = (e) => {
-    // console.log(e);
-    dispatch(ADD(e));
-  };
-
-  const dlt = (id) => {
-    dispatch(DLT(id));
-    history("/");
-  };
-
-  // remove one
-  const remove = (item) => {
-    dispatch(REMOVE(item));
-  };
-
   useEffect(() => {
-    compare();
-  }, [id]);
+    getData();
+  }, []);
+
+  const storeemail = sessionStorage.getItem("useremail");
+  const storeuser = sessionStorage.getItem("username");
+  const Add = (element) => {
+    axios.post("http://localhost:8000/cartDetails", {
+      rname: element.rname,
+      imgdata: element.imgdata,
+      address: element.address,
+      delimg: element.delimg,
+      somedata: element.somedata,
+      price: element.price,
+      rating: element.rating,
+      arrimg: element.arrimg,
+      qnty: 1,
+      useremail: storeemail,
+      username: storeuser,
+    });
+  };
 
   return (
     <>
       <div className="container mt-2">
-        <h2 className="text-center">Iteams Details Page</h2>
+        <br />
+        <br />
+
+        <br />
+
+        <h4 className="text-center">Book Details Page</h4>
 
         <section className="container mt-3">
           <div className="iteamsdetails">
-            {data.map((ele) => {
-              return (
-                <>
-                  <div className="items_img">
-                    <img src={ele.imgdata} alt="" />
-                  </div>
+            {data
+              .filter((e) => {
+                if (e.id == id) {
+                  return e;
+                }
+              })
+              .map((ele) => {
+                return (
+                  <>
+                    <div className="items_img">
+                      <img src={ele.imgdata} alt="" />
+                    </div>
 
-                  <div className="details">
-                    <Table>
-                      <tr>
-                        <td>
-                          <p>
-                            {" "}
-                            <strong>Book</strong> : {ele.rname}
-                          </p>
-                          <p>
-                            {" "}
-                            <strong>Price</strong> : ₹{ele.price}
-                          </p>
-                          <p>
-                            {" "}
-                            <strong>Author</strong> : {ele.address}
-                          </p>
-                          <p>
-                            {" "}
-                            <strong>Total</strong> :₹ {ele.price * ele.qnty}
-                          </p>
-                          <div
-                            className="mt-5 d-flex justify-content-between align-items-center"
-                            style={{
-                              width: 100,
-                              cursor: "pointer",
-                              background: "#ddd",
-                              color: "#111",
-                            }}
-                          >
-                            <span
-                              style={{ fontSize: 24 }}
-                              onClick={
-                                ele.qnty <= 1
-                                  ? () => dlt(ele.id)
-                                  : () => remove(ele)
-                              }
-                            >
-                              -
-                            </span>
-                            <span style={{ fontSize: 22 }}>{ele.qnty}</span>
-                            <span
-                              style={{ fontSize: 24 }}
-                              onClick={() => send(ele)}
-                            >
-                              +
-                            </span>
-                          </div>
-                        </td>
-                        <td>
-                          <p>
-                            <strong>Rating :</strong>{" "}
-                            <span
+                    <div className="details">
+                      <Table>
+                        <tr>
+                          <td>
+                            <p>
+                              {" "}
+                              <strong>Book</strong> : {ele.rname}
+                            </p>
+                            <p>
+                              {" "}
+                              <strong>Price</strong> : ₹{ele.price}
+                            </p>
+                            <p>
+                              {" "}
+                              <strong>Author</strong> : {ele.address}
+                            </p>
+
+                            <div
+                              className="mt-5 d-flex justify-content-between align-items-center"
                               style={{
-                                background: "green",
-                                color: "#fff",
-                                padding: "2px 5px",
-                                borderRadius: "5px",
-                              }}
-                            >
-                              {ele.rating} ★{" "}
-                            </span>
-                          </p>
-                          <p>
-                            <strong>Order Review :</strong>{" "}
-                            <span>{ele.somedata} </span>
-                          </p>
-                          <p>
-                            <strong>Remove :</strong>{" "}
-                            <span
-                              id="remove"
-                              className="material-symbols-outlined"
-                              onClick={() => dlt(ele.id)}
-                              style={{
-                                color: "blue",
-                                fontSize: 20,
+                                width: 100,
                                 cursor: "pointer",
+                                background: "#ddd",
+                                color: "#111",
                               }}
-                            >
-                              <span className="material-symbols-outlined">
-                                {" "}
-                                delete
-                              </span>{" "}
-                            </span>{" "}
-                          </p>
-                        </td>
-                      </tr>
-                    </Table>
-                  </div>
-                  <NavLink to="/productpage" id="back">
-                    <span className="material-symbols-outlined">
-                      {" "}
-                      arrow_back_ios{" "}
-                    </span>{" "}
-                    Back to all products{" "}
-                  </NavLink>
-                </>
-              );
-            })}
+                            ></div>
+                          </td>
+                          <td>
+                            <p>
+                              <strong>Rating :</strong>{" "}
+                              <span
+                                style={{
+                                  background: "green",
+                                  color: "#fff",
+                                  padding: "2px 5px",
+                                  borderRadius: "5px",
+                                }}
+                              >
+                                {ele.rating} ★{" "}
+                              </span>
+                            </p>
+                            <p>
+                              <strong>Order Review :</strong>{" "}
+                              <span>{ele.somedata} </span>
+                            </p>
+                          </td>
+                        </tr>
+                        <Button
+                          variant="primary"
+                          onClick={() => {
+                            Add(ele);
+                          }}
+                          className="col-lg-12"
+                        >
+                          <p>Add to Cart</p>{" "}
+                        </Button>{" "}
+                      </Table>
+                    </div>
+                    <NavLink to="/productpage" id="back">
+                      <span className="material-symbols-outlined">
+                        {" "}
+                        arrow_back_ios{" "}
+                      </span>{" "}
+                      Back to cart{" "}
+                    </NavLink>
+                  </>
+                );
+              })}
           </div>
         </section>
       </div>

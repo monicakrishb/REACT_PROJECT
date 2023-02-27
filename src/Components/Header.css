@@ -11,13 +11,20 @@
   z-index: 4;
   top: 0;
 }
+.Navbar{
+  display: flex;
+}
 .Navbar .Navlink {
   margin: 10px;
   text-decoration: none;
   color: black;
 }
+.cart{
+  position: relative;
+  top: 10px;
+}
 #checkout {
-  width: 100px;
+  width: 150px;
   height: 40px;
   color: white;
   background-color: blue;
@@ -30,4 +37,23 @@
 .Navlink{
  display: flex;
 
+}
+#order{
+position: relative;
+left: 19px;
+margin-top:9px;
+}
+
+#log{
+  margin-top: 9px;
+  margin-right: 8px;
+}
+.card_details{
+  position: relative;
+  right: 35px;
+}
+#profile{
+  position: relative;
+  left: 35px;
+  top: 8px;
 }

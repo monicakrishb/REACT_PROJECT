@@ -3,27 +3,54 @@
   border-radius: 60%;
   object-fit: fill;
   border: 1px solid darkgray;
-  margin-left: 300px;
-
+  margin-left: 320px;
+  background-color: blue;
+  position: relative;
+  bottom: 100px;
 }
 .whole {
-  border: 1px solid darkgray;
+  border: 1px solid rgb(243, 244, 246);
+  border-radius: 2%;
   height: 600px;
-  margin-left: 250px;
+  width: 800px;
+  margin-left: 350px;
   margin-right: 500px;
   margin-top: 100px;
+  position: relative;
 }
 .profile {
   width: 70px;
 }
 #user {
   height: 50px;
+  background-color: black;
 }
 #full {
   height: 50px;
   width: 100px;
 }
-#formBox{
-   
-   
+
+#formBox {
+  border: 1px solid rgb(243, 244, 246);
+  bottom: 270px;
+  height: 410px;
+  width: 500px;
+  position: relative;
+  right: 120px;
+
+  padding: 10px;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+#update {
+  margin-left: 170px;
+  margin-top: 10px;
+}
+#address {
+  height: 40px;
+  width: 380px;
 }

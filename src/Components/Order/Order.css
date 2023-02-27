@@ -28,4 +28,9 @@ top: 10px;
 }
 .order{
     margin: 20px;
+    width:350px;
+  
+}
+.order strong{
+   margin-top: 20px;
 }

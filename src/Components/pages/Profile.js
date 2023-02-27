@@ -12,12 +12,12 @@ const Profile = () => {
   let store = sessionStorage.getItem("useremail");
   console.log(store);
 
-  
-
   const loadData = async () => {
     const response = await Axios.get(
       `http://localhost:8000/user?email=${store}`
     );
+    console.log(response);
+
     console.log(response.data);
     console.log(response.data[0].email);
     setinstanceid(response.data[0].id);
@@ -85,78 +85,65 @@ const Profile = () => {
           />
         </div>
         {sessionStorage.getItem("useremail") == store ? (
-          <div>
+          <div className="form">
             <form>
-              <div id="formBox">
-                <div>
+              <div className="card" id="formBox">
+                <div className="label">
                   <label>User Name</label>
                   <input
                     type="text"
                     value={instanceusername}
-                    data-testId="user-test"
+                    data-testId="instanceuser"
                     onChange={(e) => setinstanceuser(e.target.value)}
                     required
                   />
                 </div>
-                <div>
+                <div className="label">
                   <label>Password</label>
                   <input
                     type="text"
                     value={instancepassword}
-                    data-testId="pass-test"
+                    data-testId="instancepassword"
                     onChange={(e) => setinstancepassword(e.target.value)}
                     required
                   />
                 </div>
-                <div>
+                <div className="label">
                   <label>Phone</label>
                   <input
                     type="text"
-                    data-testId="phone-test"
+                    data-testId="instancephone"
                     value={instancephone}
                     onChange={(e) => setinstancephone(e.target.value)}
                     required
                   />
                 </div>
 
-                <div>
-                  <label>Country</label>
+                <div className="label">
+                  <label>Address</label>
                   <input
+                    id="address"
                     type="text"
-                    data-testId="country-test"
-                    value={instancecountry}
-                    onChange={(e) => setinstancecountry(e.target.value)}
+                    data-testId="instanceaddress"
+                    value={instanceaddress}
+                    onChange={(e) => setinstanceaddress(e.target.value)}
                     required
                   />
                 </div>
-                <div>
-                  <button data-testid = 'edit-btn' onClick={Update()}>Edit</button>
-                </div>
-
-                <div>
-                  <button onClick={() => navigate("/")} className="editbtn">
-                     Back
+                <div id="update">
+                  <button
+                    className="btn btn-primary"
+                    data-testid="edit-btn"
+                    onClick={Update()}
+                  >
+                    Submit changes
                   </button>
                 </div>
               </div>
             </form>
           </div>
         ) : (
-          <div>
-            <div>
-              <button
-                onClick={() => navigate("/")}
-                style={{
-                  marginTop: "40px",
-                  marginLeft: "43%",
-                  width: "280px",
-                  height: "50px",
-                }}
-              >
-             Home
-              </button>
-            </div>
-          </div>
+          <div></div>
         )}
       </div>
     </div>
