@@ -51,7 +51,12 @@ export const Placeorder = () => {
         style={{ width: "400px", height: "400px", marginLeft: "35%" }}
       />
       <h6 style={{ marginLeft: "43%" }}>Order is confirmed </h6>
-      <button onClick={Delete} style={{ marginLeft: "47%" }}>
+      <button
+        className="btn btn-primary"
+        onClick={Delete}
+        style={{ marginLeft: "42%" }}
+        id="order"
+      >
         confirm order
       </button>
     </div>
