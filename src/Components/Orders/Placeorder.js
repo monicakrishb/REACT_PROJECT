@@ -50,12 +50,12 @@ export const Placeorder = () => {
         src={require("./../assert/correcttick.gif")}
         style={{ width: "400px", height: "400px", marginLeft: "35%" }}
       />
-      <h6 style={{ marginLeft: "43%" }}>Order is confirmed </h6>
+      <h6 style={{ marginLeft: "53%" }}>Order is confirmed </h6>
       <button
         className="btn btn-primary"
         onClick={Delete}
         style={{ marginLeft: "42%" }}
-        id="order"
+        id="confirmorder"
       >
         confirm order
       </button>

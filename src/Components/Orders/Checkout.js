@@ -19,12 +19,10 @@ function Checkout() {
       setinstanceid(response.data[0].id);
       setinstanceemail(response.data[0].email);
       setinstanceuser(response.data[0].name);
-
       setinstancephone(response.data[0].phone);
       setinstancepassword(response.data[0].password);
       setinstancecountry(response.data[0].country);
       setinstancegender(response.data[0].gender);
-
       setinstanceaddress(response.data[0].address);
     } catch (err) {
       console.log("no action");
@@ -40,9 +38,9 @@ function Checkout() {
   const [instancegender, setinstancegender] = useState("");
 
   const navigate = useNavigate();
-  const Update = () => {
+  const Update = async () => {
     zero == 0 ? setZero(1) : setZero(0);
-    axios
+    await axios
       .put(`http://localhost:8000/user/${instanceid}`, {
         id: instanceid,
         name: instanceusername,
@@ -58,13 +56,11 @@ function Checkout() {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        getData();
       });
-
-    setTimeout(() => {
-      getData();
-    });
   };
-
   useEffect(() => {
     getData();
   }, []);
@@ -162,11 +158,6 @@ function Checkout() {
         " "
       )}
 
-      <br />
-      <br />
-
-      <br />
-
       {zero == 1 ? (
         <div className="checkout">
           <div className="card form">
@@ -178,7 +169,7 @@ function Checkout() {
               })
               .map((val) => (
                 <>
-                  <strong>{val.id+" "+val.name}</strong>
+                  <strong>{val.id + " " + val.name}</strong>
                   <h6>{val.address}</h6>
                   <h6>{val.country}</h6>
                   <h6>{val.phone}</h6>
@@ -191,7 +182,6 @@ function Checkout() {
                     <th width="50%">Product</th>
                     <th>Price</th>
                     <th>Qty</th>
-
                     <th>Total</th>
                   </tr>
                 </thead>
@@ -208,7 +198,6 @@ function Checkout() {
                         <tr>
                           <td>{e.rname}</td>
                           <td>{e.price}</td>
-
                           <td>{e.qnty}</td>
                           <td>{e.price}</td>
                         </tr>

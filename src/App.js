@@ -12,10 +12,10 @@ import Protect from "./Components/protectRoute/Protect";
 import { ToastContainer } from "react-toastify";
 import { Errorpage } from "./Components/Errorpage/ErrorPage";
 import Profile from "./Components/pages/Profile";
-import Orders from "./Components/Order/Order";
-import Checkout from "./Components/Order/Checkout";
+import Orders from "./Components/Orders/Order";
+import Checkout from "./Components/Orders/Checkout";
 import { Edit } from "@mui/icons-material";
-import { Placeorder } from "./Components/Order/Placeorder";
+import { Placeorder } from "./Components/Orders/Placeorder";
 
 function App() {
   return (
@@ -26,16 +26,57 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route element={<Protect />}>
-          <Route path="/productpage" element={<Cards />} />
-          <Route path="/cart/:id" element={<CardsDetails />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/placeorder" element={<Placeorder />} />
-          <Route path="/edit" element={<Edit />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="*" element={<Errorpage />} />
-        </Route>
+
+        <Route
+          path="/productpage"
+          element={
+            <Protect>
+              <Cards />
+            </Protect>
+          }
+        />
+        <Route
+          path="/cart/:id"
+          element={
+            <Protect>
+              <CardsDetails />
+            </Protect>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <Protect>
+              <Orders />
+            </Protect>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <Protect>
+              <Checkout />
+            </Protect>
+          }
+        />
+        <Route
+          path="/placeorder"
+          element={
+            <Protect>
+              <Placeorder />
+            </Protect>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <Protect>
+              <Profile />
+            </Protect>
+          }
+        />
+        <Route path="*" element={<Errorpage />} />
       </Routes>
     </>
   );

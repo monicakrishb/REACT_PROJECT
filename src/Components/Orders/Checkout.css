@@ -1,0 +1,33 @@
+.checkout {
+  height: 400px;
+  width: 400px;
+  margin-top: 40px;
+  margin-left: 500px;
+}
+.card {
+  padding: 14px;
+  margin-top: 170px;
+}
+.btndeliver {
+  height: 40px;
+  width: 250px;
+  margin: 3px;
+  margin-left: 55px;
+}
+
+#grand {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#amount {
+  position: relative;
+  left: 170px;
+  bottom: 40px;
+}
+.table {
+  position: relative;
+  left: 40px;
+}

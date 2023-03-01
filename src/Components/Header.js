@@ -15,10 +15,12 @@ import { setCount } from "../Redux/Reduce/Cartcount";
 
 const Header = () => {
   const [productdata, setProductdata] = useState([]);
+  const [grand, grandTotal] = useState();
 
   useEffect(() => {
     loadData();
   }, []);
+
   const dispatch = useDispatch();
 
   const loadData = async () => {
@@ -36,6 +38,17 @@ const Header = () => {
 
   const getdata = useSelector((state) => state.cart.count);
   // console.log(getdata);
+  useEffect(() => {
+    console.log("pricelog");
+    const Total_Price = productdata
+      .filter((e) => {
+        if (e.useremail === store) {
+          return e;
+        }
+      })
+      .reduce((a, b) => a + b.price * b.qnty, 0);
+    grandTotal(Total_Price);
+  }, [getdata, productdata]);
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -47,11 +60,9 @@ const Header = () => {
     setAnchorEl(null);
   };
 
-  const dlt = (id) => {
-    axios.delete("http://localhost:8000/cartDetails/" + id);
-    setTimeout(() => {
-      loadData();
-    }, 500);
+  const dlt = async (id) => {
+    await axios.delete("http://localhost:8000/cartDetails/" + id);
+    loadData();
   };
 
   const total = () => {
@@ -68,24 +79,15 @@ const Header = () => {
   const handleClickss = () => {
     sessionStorage.clear();
     getdata = [];
-    setTimeout(() => {
-      navigate("/");
-    }, 500);
+    navigate("/");
   };
 
   const session = sessionStorage.getItem("useremail");
 
-  const Total_Price = productdata
-    .filter((e) => {
-      if (e.useremail === store) {
-        return e;
-      }
-    })
-    .reduce((a, b) => a + b.price * b.qnty, 0);
   const storeemail = sessionStorage.getItem("useremail");
   const storeuser = sessionStorage.getItem("username");
-  function Addqty(element) {
-    axios.put("http://localhost:8000/cartDetails/" + element.id, {
+  async function Addqty(element) {
+    await axios.put("http://localhost:8000/cartDetails/" + element.id, {
       id: element.id,
       rname: element.rname,
       imgdata: element.imgdata,
@@ -98,15 +100,13 @@ const Header = () => {
       qnty: 1 + element.qnty,
       useremail: storeemail,
       username: storeuser,
+      pid: element.pid,
     });
-    setTimeout(() => {
-      loadData();
-    }, 400);
+    loadData();
   }
- 
 
-  function Subqty(element) {
-    axios.put("http://localhost:8000/cartDetails/" + element.id, {
+  async function Subqty(element) {
+    await axios.put("http://localhost:8000/cartDetails/" + element.id, {
       id: element.id,
       rname: element.rname,
       imgdata: element.imgdata,
@@ -119,10 +119,9 @@ const Header = () => {
       qnty: element.qnty - 1,
       useremail: storeemail,
       username: storeuser,
-    }); // dispatch(DLT(id));
-    setTimeout(() => {
-      loadData();
-    }, 400);
+      pid: element.pid,
+    });
+    loadData();
   }
 
   const bag = getdata.filter((e) => {
@@ -130,7 +129,6 @@ const Header = () => {
       return e;
     }
   });
-  
 
   return (
     <>
@@ -176,21 +174,26 @@ const Header = () => {
                 style={{ fontSize: 25, cursor: "pointer" }}
               ></i>
             </Badge>
-            <Link
-              to="/orders"
-              className="text-decoration-none text-dark"
-              id="order"
-            >
-              Orders
-            </Link>
-            {/* {value === null ? "":(
-            <Link 
-              to="/profile"
-              className="text-decoration-none text-dark"
-              id="profile"
-            >
-              <span  class="material-symbols-outlined">account_circle</span>
-            </Link>)} */}
+            {value === null ? (
+              ""
+            ) : (
+              <div>
+                <Link
+                  to="/orders"
+                  className="text-decoration-none text-dark"
+                  id="order"
+                >
+                  Orders
+                </Link>
+                <Link
+                  to="/profile"
+                  className="text-decoration-none text-dark"
+                  id="profile"
+                >
+                  <span class="material-symbols-outlined">account_circle</span>
+                </Link>
+              </div>
+            )}
           </div>
         </Container>
 
@@ -281,7 +284,7 @@ const Header = () => {
                       </>
                     ))}
                   <p className="text-center" id="total">
-                    Total :₹ {Total_Price}
+                    Total :₹ {grand}
                   </p>
                 </tbody>
                 <div>

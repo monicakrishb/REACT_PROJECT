@@ -1,6 +1,4 @@
-import React, { Component } from "react";
-import { Navigate } from "react-router";
-import { NavLink } from "react-router-dom";
+import React from "react";
 import "./Home.css";
 
 export default function Home() {

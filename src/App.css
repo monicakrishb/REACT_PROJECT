@@ -50,3 +50,19 @@
     position: relative;
     top: 7px;
   }
+  #order{
+    position: relative;
+    right: 20px;
+    height: 30px;
+  }
+  #detail{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+  }
+  #confirmorder{
+    position: relative;
+    left: 80px;
+    height: 35px;
+   
+  }

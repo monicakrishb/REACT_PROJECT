@@ -51,14 +51,8 @@ const CardsDetails = () => {
 
   return (
     <>
+    <h4 id="detail">Book Details page</h4>
       <div className="container mt-2">
-        <br />
-        <br />
-
-        <br />
-
-        <h4 className="text-center">Book Details Page</h4>
-
         <section className="container mt-3">
           <div className="iteamsdetails">
             {data
@@ -121,15 +115,6 @@ const CardsDetails = () => {
                             </p>
                           </td>
                         </tr>
-                        <Button
-                          variant="primary"
-                          onClick={() => {
-                            Add(ele);
-                          }}
-                          className="col-lg-12"
-                        >
-                          <p>Add to Cart</p>{" "}
-                        </Button>{" "}
                       </Table>
                     </div>
                     <NavLink to="/productpage" id="back">

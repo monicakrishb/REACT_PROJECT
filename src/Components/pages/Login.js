@@ -5,19 +5,19 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { validate } from "./loginValidate";
 
+
+
 const Login = () => {
   const [username, usernameupdate] = useState("");
   const [password, passwordupdate] = useState("");
   const [email, emailupdate] = useState("");
   const usenavigate = useNavigate();
-
   const ProceedLogin = (e) => {
     e.preventDefault();
     if (validate(username, password)) {
       try {
         fetch(`http://localhost:8000/user?email=${username}`)
           .then((res) => {
-            console.log(res);
             return res.json();
           })
           .then((response) => {
@@ -29,8 +29,9 @@ const Login = () => {
             } else {
               if (response[0].password === password) {
                 toast.success("Success");
+              
                 sessionStorage.setItem("useremail", username);
-            
+
                 usenavigate("/");
               } else {
                 toast.error("Please enter valid credentials");

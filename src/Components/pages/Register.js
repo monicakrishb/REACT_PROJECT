@@ -5,6 +5,8 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import StrengthMeter from "./StrengthMeter";
+import { registerpost } from "../../services/API";
+
 
 const Register = () => {
   const [id, idchange] = useState("");
@@ -78,7 +80,7 @@ const Register = () => {
     }
     if (id === null || name === "") {
       isproceed = false;
-      errormessage += " Fullname";
+      errormessage += " lastname";
     }
     if (id === null || password === "") {
       isproceed = false;
@@ -87,16 +89,15 @@ const Register = () => {
     if (id === null || email === "") {
       isproceed = false;
       errormessage += " Email";
-    }
-    else {
-      if(!email.match("[a-z0-9]+@[a-z]+[.][2,3]")){
+    } else {
+      if (!email.match("[a-z0-9]+@[a-z]+[.][a-z]{2,3}")) {
         isproceed = false;
         toast.warning("please enter the vaild email");
       }
 
-    if (!isproceed) {
-      toast.warning(errormessage);
-    } 
+      if (!isproceed) {
+        toast.warning(errormessage);
+      }
     }
 
     return isproceed;
@@ -104,18 +105,24 @@ const Register = () => {
   const handlesubmit = (e) => {
     e.preventDefault();
     let regobj = { id, name, password, email, phone, country, address, gender };
-    if (IsValidate({id:{id},name:{name},password:{password},email:{email}})) {
-      axios
-        .post("http://localhost:8000/user", regobj)
+    if (IsValidate()) {
+      // console.log(regobj);
+      // axios
+      //   .post("http://localhost:8000/user", regobj)
+      registerpost(regobj)
         .then((res) => {
           toast.success("registered successfully");
+          success();
         })
         .catch((err) => {
           toast.error("Failed" + err.message);
         });
     }
   };
+const success=()=>{
+  navigate("/login");
 
+}
   return (
     <div className="offset-lg-3 cl-lg-6 register">
       <form
@@ -133,7 +140,7 @@ const Register = () => {
               <div className="col-lg-6">
                 <div className="form-group">
                   <label>
-                    User Name<span className="errmsg">*</span>
+                    FirstName<span className="errmsg">*</span>
                   </label>
                   <input
                     value={id}
@@ -148,7 +155,7 @@ const Register = () => {
               <div className="col-lg-6">
                 <div className="form-group">
                   <label>
-                    Full Name<span className="errmsg">*</span>
+                    LastName<span className="errmsg">*</span>
                   </label>
                   <input
                     value={name}
@@ -266,6 +273,7 @@ const Register = () => {
                     value={address}
                     onChange={(e) => addresschange(e.target.value)}
                     className="form-control input"
+                    required
                   ></textarea>
                 </div>
               </div>
@@ -273,9 +281,11 @@ const Register = () => {
           </div>
           <div className="card-footer">
             {isStrong === "strong" && (
-              <button type="submit" className="btn btn-dark">
-                Register
-              </button>
+           
+                <button type="submit" className="btn btn-dark">
+                  Register
+                </button>
+        
             )}
           </div>
         </div>

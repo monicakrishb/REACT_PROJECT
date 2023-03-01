@@ -1,0 +1,50 @@
+#card {
+  width: 800px;
+}
+.orderimg img {
+  height: 220px;
+  width: 200px;
+  margin: 10px;
+  position: relative;
+  top: 15px;
+}
+#pname {
+  width: 200px;
+}
+#line {
+  border: 2px solid black;
+  height: 150px;
+  margin: 10px;
+  position: relative;
+  top: 10px;
+}
+#flex {
+  background-color: rgb(244, 247, 249);
+  margin: 10px;
+  height: 270px;
+  display: flex;
+  /* justify-content:center; */
+  align-items: center;
+  /* width: 800px; */
+}
+#cancel {
+  margin-left: 500px;
+}
+.order {
+  margin: 20px;
+  width: 350px;
+}
+.order strong {
+  margin-top: 20px;
+}
+#order {
+  height: 20px;
+  position: relative;
+  right: 80px;
+  width: 120px;
+  text-align: center;
+}
+#pname {
+  width: 200px;
+  width: 100%;
+}

@@ -33,12 +33,10 @@
 #formBox {
   border: 1px solid rgb(243, 244, 246);
   bottom: 270px;
-  height: 410px;
+  height: 450px;
   width: 500px;
   position: relative;
   right: 120px;
-
-  padding: 10px;
 }
 .label {
   display: flex;
@@ -46,11 +44,16 @@
   align-items: center;
   padding: 5px;
 }
+.label input {
+  width: 250px;
+}
 #update {
   margin-left: 170px;
   margin-top: 10px;
 }
-#address {
-  height: 40px;
-  width: 380px;
+#sample {
+  height: 50px;
+}
+.lab{
+  margin-right:180px;
 }

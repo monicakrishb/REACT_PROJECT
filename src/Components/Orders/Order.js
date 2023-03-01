@@ -5,6 +5,10 @@ import "./Order.css";
 
 function Orders() {
   const [orderdata, setOrderdata] = useState([]);
+
+  useEffect(() => {
+    getData();
+  }, []);
   const getData = async () => {
     try {
       const res = await axios.get("http://localhost:8000/orderDetails");
@@ -13,17 +17,11 @@ function Orders() {
       console.log("No action");
     }
   };
-  useEffect(() => {
-    getData();
-  }, []);
-
   const store = sessionStorage.getItem("useremail");
 
-  function Deleteorder(id) {
-    axios.delete("http://localhost:8000/orderDetails/" + id);
-    setTimeout(() => {
-      getData();
-    }, 300);
+  async function Deleteorder(id) {
+    await axios.delete("http://localhost:8000/orderDetails/" + id);
+    getData();
   }
 
   return (
@@ -39,27 +37,28 @@ function Orders() {
             })
             .map((e) => (
               <div id="flex">
-                <div>
+                <div className="orderimg">
                   <img src={e.imgdata} id="orderimg"></img>
                 </div>
                 <div id="line"></div>
+
                 <div className="order">
                   <strong>Ordered on</strong> <br />
-                  <strong>{e.Date}</strong>
+                  <p>{e.Date}</p>
                 </div>
                 <div className="order">
                   <strong>Quantity</strong>
                   <br />
-                  <strong>{e.qnty}</strong>
+                  <p>{e.qnty}</p>
                 </div>
-                <div className="order">
+                <div className="order " id="pname">
                   <strong>Product name</strong> <br />
-                  <strong>{e.productname}</strong>
+                  <p>{e.productname}</p>
                 </div>
                 <div className="order">
                   <strong>Price</strong>
                   <br />
-                  <strong>{e.price}</strong>
+                  <p>{e.price}</p>
                 </div>
 
                 <div id="cancel">
@@ -67,7 +66,7 @@ function Orders() {
                     className="btn btn-danger"
                     onClick={() => Deleteorder(e.id)}
                   >
-                    <h5>Cancel Order</h5>
+                    <h6 id="cancelorder">Cancel Order</h6>
                   </button>
                 </div>
               </div>

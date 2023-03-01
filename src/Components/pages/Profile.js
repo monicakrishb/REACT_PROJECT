@@ -63,11 +63,10 @@ const Profile = () => {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        loadData();
       });
-
-    setTimeout(() => {
-      loadData();
-    });
   };
 
   return (
@@ -97,7 +96,7 @@ const Profile = () => {
                 <div className="label">
                   <label className="lab">Password</label>
                   <input
-                    type="text"
+                    type="password"
                     value={instancepassword}
                     data-testId="instancepassword"
                     onChange={(e) => setinstancepassword(e.target.value)}
