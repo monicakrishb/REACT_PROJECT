@@ -1,9 +1,9 @@
-import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setCount } from "../../Redux/Reduce/Cartcount";
+import register from "../../services/API";
 export const Placeorder = () => {
   const getdata = useSelector((state) => state.cart.count);
 
@@ -19,9 +19,9 @@ export const Placeorder = () => {
     getData();
   }, []);
   const deletedata = async () => {
-    const response = await axios.get("http://localhost:8000/cartDetails");
-    console.log("value", response.data);
-    dispatch(setCount(response.data));
+    const response = (await register.placeorder()).data;
+    console.log("value", response);
+    dispatch(setCount(response));
   };
 
   const arraycd = data
@@ -34,10 +34,8 @@ export const Placeorder = () => {
   console.log(arraycd);
   const navigate = useNavigate();
 
-  const Delete = () => {
-    arraycd.forEach((id) =>
-      axios.delete("http://localhost:8000/cartdetails/" + id)
-    );
+  const Delete = async () => {
+    arraycd.forEach(async (id) => await register.placedelete(id));
     deletedata();
     navigate("/");
   };

@@ -1,5 +1,6 @@
 import React from "react";
 import "./StrengthMeter.css";
+
 const StrengthMeter = (props) => {
   const pwdValidate = props.password;
   const initPwdChecker = () => {
@@ -41,7 +42,6 @@ const StrengthMeter = (props) => {
     }
   };
   {
-    
     props.actions(initPwdChecker().val);
   }
   return (
@@ -59,7 +59,7 @@ const StrengthMeter = (props) => {
               <p className={`label strength-${initPwdChecker().val}`}>
                 <strong>{initPwdChecker().val}</strong>
               </p>
-                <h6>Password strength validation:</h6>
+              <h6>Password strength validation:</h6>
             </div>
           )}
         </p>

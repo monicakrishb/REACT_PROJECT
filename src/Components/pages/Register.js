@@ -1,12 +1,10 @@
 import React from "react";
-import "./Register.css";
-import axios from "axios";
 import { useState } from "react";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import register from "../../services/API";
 import StrengthMeter from "./StrengthMeter";
-import { registerpost } from "../../services/API";
-
+import "./Register.css";
 
 const Register = () => {
   const [id, idchange] = useState("");
@@ -62,14 +60,14 @@ const Register = () => {
   const initPwdInput = async (childData) => {
     initRobustPassword(childData);
   };
-  const onSubmit = async (e) => {
-    try {
-      e.preventDefault();
-      e.persist();
-    } catch (error) {
-      throw error;
-    }
-  };
+  // const onSubmit = async (e) => {
+  //   try {
+  //     e.preventDefault();
+  //     e.persist();
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // };
   const IsValidate = () => {
     let isproceed = true;
     let errormessage = " please enter the value in";
@@ -106,10 +104,8 @@ const Register = () => {
     e.preventDefault();
     let regobj = { id, name, password, email, phone, country, address, gender };
     if (IsValidate()) {
-      // console.log(regobj);
-      // axios
-      //   .post("http://localhost:8000/user", regobj)
-      registerpost(regobj)
+      register
+        .registerpost(regobj)
         .then((res) => {
           toast.success("registered successfully");
           success();
@@ -119,12 +115,11 @@ const Register = () => {
         });
     }
   };
-const success=()=>{
-  navigate("/login");
-
-}
+  const success = () => {
+    navigate("/login");
+  };
   return (
-    <div className="offset-lg-3 cl-lg-6 register">
+    <div className="offset-lg-3 cl-lg-6 reg">
       <form
         className="container"
         id="container"
@@ -231,7 +226,7 @@ const success=()=>{
                     className="form-control inputOpt input"
                     id="country"
                   >
-                    st onChange = (<option value="india">India</option>
+                    st onChange = <option value="india">India</option>
                     <option value="usa">USA</option>
                     <option value="singapore">Singapore</option>
                   </select>
@@ -281,11 +276,9 @@ const success=()=>{
           </div>
           <div className="card-footer">
             {isStrong === "strong" && (
-           
-                <button type="submit" className="btn btn-dark">
-                  Register
-                </button>
-        
+              <button type="submit" className="btn btn-dark">
+                Register
+              </button>
             )}
           </div>
         </div>

@@ -14,8 +14,8 @@ import { Errorpage } from "./Components/Errorpage/ErrorPage";
 import Profile from "./Components/pages/Profile";
 import Orders from "./Components/Orders/Order";
 import Checkout from "./Components/Orders/Checkout";
-import { Edit } from "@mui/icons-material";
 import { Placeorder } from "./Components/Orders/Placeorder";
+import Loginprotect from "./Components/protectRoute/Loginprotect";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Loginprotect><Login /></Loginprotect>} />
 
         <Route
           path="/productpage"

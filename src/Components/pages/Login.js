@@ -1,43 +1,36 @@
 import { useState } from "react";
-import "./Login.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import register from "../../services/API";
 import { validate } from "./loginValidate";
+import "./Login.css";
 
-
-
-const Login = () => {
+export default function Login() {
   const [username, usernameupdate] = useState("");
   const [password, passwordupdate] = useState("");
-  const [email, emailupdate] = useState("");
   const usenavigate = useNavigate();
   const ProceedLogin = (e) => {
     e.preventDefault();
     if (validate(username, password)) {
       try {
-        fetch(`http://localhost:8000/user?email=${username}`)
-          .then((res) => {
-            return res.json();
-          })
-          .then((response) => {
-            console.log(response[0].password);
-            console.log(`http://localhost:8000/user?email=${username}`);
+        register.loginpost(username).then((response) => {
+          console.log(response.data[0].password);
 
-            if (Object.keys(response).length == 0) {
-              toast.error("Please enter valid username");
+          if (Object.keys(response.data).length === 0) {
+            toast.error("Please enter valid username");
+          } else {
+            if (response.data[0].password === password) {
+              toast.success("Success");
+
+              sessionStorage.setItem("useremail", username);
+
+              usenavigate("/");
             } else {
-              if (response[0].password === password) {
-                toast.success("Success");
-              
-                sessionStorage.setItem("useremail", username);
-
-                usenavigate("/");
-              } else {
-                toast.error("Please enter valid credentials");
-              }
+              toast.error("Please enter valid credentials");
             }
-          });
+          }
+        });
       } catch (err) {
         toast.error("Login Failed due to:" + err.message);
       }
@@ -45,18 +38,7 @@ const Login = () => {
       toast.warning("Please enter username and password");
     }
   };
-  // const validate = () => {
-  //   let result = true;
-  //   if (username === "" || username === null) {
-  //     result = false;
-  //     toast.warning("Please Enter Username");
-  //   }
-  //   if (password === "" || password === null) {
-  //     result = false;
-  //     toast.warning("Please Enter Password");
-  //   }
-  //   return result;
-  // };
+
   return (
     <div className="offset-lg-3 col-lg-6" id="table">
       <form onSubmit={ProceedLogin} className="container">
@@ -98,10 +80,7 @@ const Login = () => {
             </Link>
           </div>
         </div>
-        <div></div>
       </form>
     </div>
   );
-};
-
-export default Login;
+}

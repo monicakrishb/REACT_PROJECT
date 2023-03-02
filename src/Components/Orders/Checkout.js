@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./Checkout.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import register from "../../services/API";
+import "./Checkout.css";
 
 function Checkout() {
   const [data, setData] = useState([]);
@@ -10,10 +11,8 @@ function Checkout() {
   const [logindata, setLogindata] = useState([]);
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/cartDetails");
-      const response = await axios.get(
-        `http://localhost:8000/user?email=${session}`
-      );
+      const res = await register.check();
+      const response = await register.checkout();
       setData(res.data);
       setLogindata(response.data);
       setinstanceid(response.data[0].id);
@@ -25,7 +24,7 @@ function Checkout() {
       setinstancegender(response.data[0].gender);
       setinstanceaddress(response.data[0].address);
     } catch (err) {
-      console.log("no action");
+      toast.warning("No action");
     }
   };
   const [instancecountry, setinstancecountry] = useState("");
@@ -40,8 +39,8 @@ function Checkout() {
   const navigate = useNavigate();
   const Update = async () => {
     zero == 0 ? setZero(1) : setZero(0);
-    await axios
-      .put(`http://localhost:8000/user/${instanceid}`, {
+    register
+      .checkid(instanceid, {
         id: instanceid,
         name: instanceusername,
         password: instancepassword,
@@ -73,7 +72,7 @@ function Checkout() {
     })
     .reduce((a, b) => a + b.price * b.qnty, 0);
 
-  const Orderfunct = () => {
+  const Orderfunct = async () => {
     data
       .filter((e) => {
         if (e.useremail === session) {
@@ -81,7 +80,7 @@ function Checkout() {
         }
       })
       .map((e) =>
-        axios.post("http://localhost:8000/orderDetails", {
+        register.checkorder({
           rname: e.id,
           imgdata: e.imgdata,
           address: e.address,

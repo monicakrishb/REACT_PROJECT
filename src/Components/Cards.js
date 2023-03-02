@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
@@ -7,6 +6,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD } from "../Redux/actions/action";
 import { setCount } from "../Redux/Reduce/Cartcount";
+import register from "../services/API";
 import "./style.css";
 
 const Cards = () => {
@@ -16,26 +16,19 @@ const Cards = () => {
   const store = sessionStorage.getItem("useremail");
   const dispatch = useDispatch();
   const getData = async () => {
-    try {
-      const res = await axios.get("http://localhost:8000/bookDetails");
-      const getdata = (await axios.get("http://localhost:8000/cartDetails"))
-        .data;
-      res.data &&
-        res.data.forEach((i, index) => {
-          getdata.forEach((j) => {
-            if (i.id === j.pid && j.useremail === store) {
-              // console.log("added");
-
-              res.data[index].added = true;
-            }
-          });
+    const res = (await register.cards()).data;
+    const getdata = (await register.getdata()).data;
+    res &&
+      res.forEach((i, index) => {
+        getdata.forEach((j) => {
+          if (i.id === j.pid && j.useremail === store) {
+            res[index].added = true;
+          }
         });
-      console.log(res.data);
-      setData(res.data);
-      setLoading(true);
-    } catch (err) {
-      alert("no action");
-    }
+      });
+    console.log(res);
+    setData(res);
+    setLoading(true);
   };
 
   useEffect(() => {
@@ -51,7 +44,7 @@ const Cards = () => {
   const storeemail = sessionStorage.getItem("useremail");
 
   const Add = async (element) => {
-    await axios.post("http://localhost:8000/cartDetails", {
+    await register.cardadd({
       rname: element.rname,
       imgdata: element.imgdata,
       address: element.address,
@@ -69,9 +62,9 @@ const Cards = () => {
   };
   const navigate = useNavigate();
   const loadData = async () => {
-    const response = await axios.get("http://localhost:8000/cartDetails");
-    console.log("value", response.data);
-    dispatch(setCount(response.data));
+    const response = (await register.cardload()).data;
+    console.log("value", response);
+    dispatch(setCount(response));
   };
 
   return (

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-import Badge from "@mui/material/Badge";
+import Table from "react-bootstrap/esm/Table";
 import Nav from "react-bootstrap/Nav";
 import Menu from "@mui/material/Menu";
-import Table from "react-bootstrap/esm/Table";
-import "./Header.css";
+import Badge from "@mui/material/Badge";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { setCount } from "../Redux/Reduce/Cartcount";
+import register from "../services/API";
+import "./Header.css";
 
 const Header = () => {
   const [productdata, setProductdata] = useState([]);
@@ -24,14 +24,13 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const loadData = async () => {
-    const response = await axios.get("http://localhost:8000/cartDetails");
-    setProductdata(response.data);
-    console.log("value", response.data);
-    dispatch(setCount(response.data));
+    const response = (await register.cart()).data;
+    setProductdata(response);
+    console.log("value", response);
+    dispatch(setCount(response));
   };
 
   const store = sessionStorage.getItem("useremail");
-  const [cartlength, setCartlength] = useState("");
 
   const [price, setPrice] = useState(0);
   // console.log(price);
@@ -61,7 +60,7 @@ const Header = () => {
   };
 
   const dlt = async (id) => {
-    await axios.delete("http://localhost:8000/cartDetails/" + id);
+    register.delete(id);
     loadData();
   };
 
@@ -82,12 +81,11 @@ const Header = () => {
     navigate("/");
   };
 
-  const session = sessionStorage.getItem("useremail");
-
   const storeemail = sessionStorage.getItem("useremail");
   const storeuser = sessionStorage.getItem("username");
+
   async function Addqty(element) {
-    await axios.put("http://localhost:8000/cartDetails/" + element.id, {
+    await register.add(element.id, {
       id: element.id,
       rname: element.rname,
       imgdata: element.imgdata,
@@ -106,7 +104,7 @@ const Header = () => {
   }
 
   async function Subqty(element) {
-    await axios.put("http://localhost:8000/cartDetails/" + element.id, {
+    await register.sub(element.id, {
       id: element.id,
       rname: element.rname,
       imgdata: element.imgdata,
@@ -159,21 +157,23 @@ const Header = () => {
             ) : (
               ""
             )}
-            <Badge
-              className="cart"
-              badgeContent={bag.length}
-              color="primary"
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-            >
-              <i
-                className="fa fa-shopping-cart "
-                style={{ fontSize: 25, cursor: "pointer" }}
-              ></i>
-            </Badge>
+            {store && (
+              <Badge
+                className="cart"
+                badgeContent={bag.length}
+                color="primary"
+                id="basic-button"
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+              >
+                <i
+                  className="fa fa-shopping-cart "
+                  style={{ fontSize: 25, cursor: "pointer" }}
+                ></i>
+              </Badge>
+            )}
             {value === null ? (
               ""
             ) : (

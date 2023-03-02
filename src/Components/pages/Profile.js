@@ -1,8 +1,8 @@
 import React from "react";
-import Axios from "axios";
-import "./Profile.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import register from "../../services/API";
+import "./Profile.css";
 
 const Profile = () => {
   useEffect(() => {
@@ -12,28 +12,25 @@ const Profile = () => {
   let store = sessionStorage.getItem("useremail");
   console.log(store);
 
-  const loadData = async () => {
-    const response = await Axios.get(
-      `http://localhost:8000/user?email=${store}`
-    );
-    console.log(response);
+  const loadData = () => {
+    const response = register.profileget(store).then((response) => {
+      console.log(response);
 
-    console.log(response.data);
-    console.log(response.data[0].email);
-    setinstanceid(response.data[0].id);
-    setinstanceemail(response.data[0].email);
-    setinstanceuser(response.data[0].name);
-    setinstancefullname(response.data[0].lastname);
-    setinstancephone(response.data[0].phone);
-    setinstancepassword(response.data[0].password);
-    setinstancecountry(response.data[0].country);
-    setinstancegender(response.data[0].gender);
-    setinstanceimg(response.data[0].img);
+      console.log(response.data);
+      console.log(response.data[0].email);
+      setinstanceid(response.data[0].id);
+      setinstanceemail(response.data[0].email);
+      setinstanceuser(response.data[0].name);
+      setinstancefullname(response.data[0].lastname);
+      setinstancephone(response.data[0].phone);
+      setinstancepassword(response.data[0].password);
+      setinstancecountry(response.data[0].country);
+      setinstancegender(response.data[0].gender);
+      setinstanceaddress(response.data[0].address);
 
-    setinstanceaddress(response.data[0].address);
-
-    console.log(response.data[0].password);
-    console.log(instancepassword);
+      console.log(response.data[0].password);
+      console.log(instancepassword);
+    });
   };
   const [instancecountry, setinstancecountry] = useState("");
   const [instanceusername, setinstanceuser] = useState("");
@@ -44,20 +41,20 @@ const Profile = () => {
   const [instancepassword, setinstancepassword] = useState("");
   const [instanceaddress, setinstanceaddress] = useState("");
   const [instancegender, setinstancegender] = useState("");
-  const [instanceimg, setinstanceimg] = useState("");
   const navigate = useNavigate();
 
-  const Update = () => {
-    Axios.put(`http://localhost:8000/user/${instanceid}`, {
-      id: instanceid,
-      name: instanceusername,
-      password: instancepassword,
-      email: instanceemail,
-      phone: instancephone,
-      country: instancecountry,
-      address: instanceaddress,
-      gender: instancegender,
-    })
+  const Update = () => {  const [instanceimg, setinstanceimg] = useState("");
+    register
+      .profileupdate(instanceid, {
+        id: instanceid,
+        name: instanceusername,
+        password: instancepassword,
+        email: instanceemail,
+        phone: instancephone,
+        country: instancecountry,
+        address: instanceaddress,
+        gender: instancegender,
+      })
       .then((resp) => {
         console.log(resp.data);
       })
@@ -72,13 +69,6 @@ const Profile = () => {
   return (
     <div>
       <div className="whole">
-        <div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-        </div>
         {sessionStorage.getItem("useremail") == store ? (
           <div className="form">
             <form>

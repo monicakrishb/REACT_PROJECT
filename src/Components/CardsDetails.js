@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import axios from "axios";
+import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import register from "../services/API";
+
 const CardsDetails = () => {
   const [data, setData] = useState([]);
   // console.log(data);
@@ -12,46 +12,22 @@ const CardsDetails = () => {
   const { id } = useParams();
   // console.log(id);
 
-  const history = useNavigate();
-
-  const dispatch = useDispatch();
-
-  const getdata = useSelector((state) => state.cart.count);
-
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/bookDetails");
-      setData(res.data);
-      console.log(res.data);
+      const res = (await register.details()).data;
+      setData(res);
+      console.log(res);
     } catch (err) {
-      alert("no action");
+      toast.warning("no action")
     }
   };
   useEffect(() => {
     getData();
   }, []);
 
-  const storeemail = sessionStorage.getItem("useremail");
-  const storeuser = sessionStorage.getItem("username");
-  const Add = (element) => {
-    axios.post("http://localhost:8000/cartDetails", {
-      rname: element.rname,
-      imgdata: element.imgdata,
-      address: element.address,
-      delimg: element.delimg,
-      somedata: element.somedata,
-      price: element.price,
-      rating: element.rating,
-      arrimg: element.arrimg,
-      qnty: 1,
-      useremail: storeemail,
-      username: storeuser,
-    });
-  };
-
   return (
     <>
-    <h4 id="detail">Book Details page</h4>
+      <h4 id="detail">Book Details page</h4>
       <div className="container mt-2">
         <section className="container mt-3">
           <div className="iteamsdetails">
