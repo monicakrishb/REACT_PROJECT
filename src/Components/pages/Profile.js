@@ -43,7 +43,8 @@ const Profile = () => {
   const [instancegender, setinstancegender] = useState("");
   const navigate = useNavigate();
 
-  const Update = () => {  const [instanceimg, setinstanceimg] = useState("");
+  const Update = () => {
+    const [instanceimg, setinstanceimg] = useState("");
     register
       .profileupdate(instanceid, {
         id: instanceid,

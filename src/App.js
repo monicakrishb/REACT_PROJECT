@@ -16,6 +16,7 @@ import Orders from "./Components/Orders/Order";
 import Checkout from "./Components/Orders/Checkout";
 import { Placeorder } from "./Components/Orders/Placeorder";
 import Loginprotect from "./Components/protectRoute/Loginprotect";
+import Registerprotect from "./Components/protectRoute/Registerprotect";
 
 function App() {
   return (
@@ -24,8 +25,22 @@ function App() {
       <ToastContainer theme="colored"></ToastContainer>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/login" element={<Loginprotect><Login /></Loginprotect>} />
+        <Route
+          path="/signup"
+          element={
+            <Registerprotect>
+              <Register />
+            </Registerprotect>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Loginprotect>
+              <Login />
+            </Loginprotect>
+          }
+        />
 
         <Route
           path="/productpage"

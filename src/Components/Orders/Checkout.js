@@ -24,7 +24,7 @@ function Checkout() {
       setinstancegender(response.data[0].gender);
       setinstanceaddress(response.data[0].address);
     } catch (err) {
-      toast.warning("No action");
+      console.log(err);
     }
   };
   const [instancecountry, setinstancecountry] = useState("");

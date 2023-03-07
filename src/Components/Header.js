@@ -32,7 +32,7 @@ const Header = () => {
 
   const store = sessionStorage.getItem("useremail");
 
-  const [price, setPrice] = useState(0);
+  // const [price, setPrice] = useState(0);
   // console.log(price);
 
   const getdata = useSelector((state) => state.cart.count);
@@ -64,13 +64,13 @@ const Header = () => {
     loadData();
   };
 
-  const total = () => {
-    let price = 0;
-    getdata.map((ele, k) => {
-      price = ele.price * ele.qnty + price;
-    });
-    setPrice(price);
-  };
+  // const total = () => {
+  //   let price = 0;
+  //   getdata.map((ele, k) => {
+  //     price = ele.price * ele.qnty + price;
+  //   });
+  //   setPrice(price);
+  // };
 
   const navigate = useNavigate();
   const value = sessionStorage.getItem("useremail");
