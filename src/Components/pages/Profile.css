@@ -4,18 +4,17 @@
   object-fit: fill;
   border: 1px solid darkgray;
   margin-left: 320px;
-  background-color: blue;
   position: relative;
   bottom: 100px;
 }
 .whole {
   border: 1px solid rgb(243, 244, 246);
-  border-radius: 2%;
-  height: 600px;
-  width: 800px;
-  margin-left: 350px;
-  margin-right: 500px;
-  margin-top: 100px;
+  border-radius: 1%;
+  height: 470px;
+  width: 600px;
+  left: 300px;
+  background-color: rgb(230, 227, 228);
+  top: 100px;
   position: relative;
 }
 .profile {
@@ -32,11 +31,12 @@
 
 #formBox {
   border: 1px solid rgb(243, 244, 246);
-  bottom: 270px;
-  height: 450px;
+  bottom: 350px;
+  padding-top: 5px;
+  height: 420px;
   width: 500px;
   position: relative;
-  right: 120px;
+  right: 130px;
 }
 .label {
   display: flex;
@@ -54,6 +54,6 @@
 #sample {
   height: 50px;
 }
-.lab{
-  margin-right:180px;
+.lab {
+  margin-right: 180px;
 }

@@ -59,3 +59,9 @@ form .form-group {
 #country {
   height: 34px;
 }
+.reg{
+  position: relative;
+  bottom: 220px;
+  right: 280px;
+
+}
