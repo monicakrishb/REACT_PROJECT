@@ -13,4 +13,4 @@ jest.mock("react-redux", () => ({
 
 test("render the component", async () => {
   render(<Header />);
-});
+}); 

@@ -14,5 +14,5 @@ jest.mock("react-redux", () => ({
 describe("Placeorder component", () => {
   it("should render component correctly", () => {
     render(<Placeorder />);
-  });
-});
+  }); 
+}); 

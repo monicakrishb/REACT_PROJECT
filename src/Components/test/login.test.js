@@ -3,7 +3,7 @@ import { fireEvent, render } from "@testing-library/react";
 import { screen } from "@testing-library/react";
 import { BrowserRouter as MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
-import App from '../../App'
+
 
 
 const mockedUsedNavigate = jest.fn();
@@ -46,7 +46,7 @@ test("email input field should accept email", () => {
 test("password input should have type password", () => {
   render(
     <MemoryRouter>
-      <Login />
+      <Login /> 
     </MemoryRouter>
   );
   const password = screen.getByPlaceholderText("Enter Password");
@@ -61,4 +61,13 @@ test("test username input is valid", () => {
   const inputElement = screen.getByTestId("username-test");
   fireEvent.change(inputElement, { target: { value: "Dhanush" } });
   expect(screen.getByTestId("username-test")).toHaveValue("Dhanush");
+});
+test('the fetch fails with an error', () => {
+  render(
+    <MemoryRouter>
+      <Login />
+    </MemoryRouter>
+  );
+  expect.assertions(1);
+  return fetchData().catch(e => expect(e).toMatch('error'));
 });

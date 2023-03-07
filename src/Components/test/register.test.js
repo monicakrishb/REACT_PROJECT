@@ -14,7 +14,7 @@ describe("Register component", () => {
     render(<Register />);
     const element = screen.getByRole("heading");
     expect(element).toBeInTheDocument();
-  });
+  });  
 });
 describe("<Register/>", () => {
   test("render name input", () => {
@@ -88,4 +88,8 @@ test("test username input is valid", () => {
   const inputElement4 = screen.getByTestId("username-test");
   fireEvent.change(inputElement4, { target: { value: "Dhanush" } });
   expect(screen.getByTestId("username-test")).toHaveValue("Dhanush");
+});
+test('there is no T in team', () => {
+  render(<Register/>)
+  expect('Registered').not.toMatch(/T/);
 });

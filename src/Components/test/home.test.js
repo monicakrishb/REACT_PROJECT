@@ -5,3 +5,4 @@ describe("Register component", () => {
     render(<Home />);
   });
 });
+ 

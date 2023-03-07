@@ -6,4 +6,4 @@ describe("Register component", () => {
     const element = screen.getByRole("heading");
     expect(element).toBeInTheDocument();
   });
-});
+}); 
