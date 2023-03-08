@@ -32,11 +32,8 @@ const Header = () => {
 
   const store = sessionStorage.getItem("useremail");
 
-  // const [price, setPrice] = useState(0);
-  // console.log(price);
-
   const getdata = useSelector((state) => state.cart.count);
-  // console.log(getdata);
+
   useEffect(() => {
     console.log("pricelog");
     const Total_Price = productdata
@@ -60,17 +57,9 @@ const Header = () => {
   };
 
   const dlt = async (id) => {
-    register.delete(id);
+    await register.delete(id);
     loadData();
   };
-
-  // const total = () => {
-  //   let price = 0;
-  //   getdata.map((ele, k) => {
-  //     price = ele.price * ele.qnty + price;
-  //   });
-  //   setPrice(price);
-  // };
 
   const navigate = useNavigate();
   const value = sessionStorage.getItem("useremail");

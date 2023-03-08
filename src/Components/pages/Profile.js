@@ -12,8 +12,8 @@ const Profile = () => {
   let store = sessionStorage.getItem("useremail");
   console.log(store);
 
-  const loadData = () => {
-    const response = register.profileget(store).then((response) => {
+  const loadData = async () => {
+    const response = await register.profileget(store).then((response) => {
       console.log(response);
 
       console.log(response.data);
@@ -43,9 +43,9 @@ const Profile = () => {
   const [instancegender, setinstancegender] = useState("");
   const navigate = useNavigate();
 
-  const Update = () => {
+  const Update = async () => {
     const [instanceimg, setinstanceimg] = useState("");
-    register
+    await register
       .profileupdate(instanceid, {
         id: instanceid,
         name: instanceusername,

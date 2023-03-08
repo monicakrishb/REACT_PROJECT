@@ -307,7 +307,7 @@
       "email": "dhiya@gmail.com",
       "phone": "9003759065",
       "country": "India",
-      "address": "Aspire",
+      "address": "AspireSystem",
       "gender": "female"
     },
     {
@@ -328,6 +328,66 @@
       "phone": "9003759065",
       "country": "India",
       "address": "1/596 MGR nagar , Mookandapalli Hosur\n\n635126",
+      "gender": "female"
+    },
+    {
+      "id": "Lilly",
+      "name": "S",
+      "password": "Lilly@13",
+      "email": "lilly@gmail.com",
+      "phone": "9003759065",
+      "country": "India",
+      "address": "Sipcot Chennai",
+      "gender": "female"
+    },
+    {
+      "id": "Manikandan",
+      "name": "A",
+      "password": "Mani@13",
+      "email": "mani@gmail.com",
+      "phone": "9003759065",
+      "country": "India",
+      "address": "Adhanur chennai",
+      "gender": "male"
+    },
+    {
+      "id": "Lakshitha",
+      "name": "L",
+      "password": "Lakshitha@13",
+      "email": "lakshitha@gmail.com",
+      "phone": "9003759065",
+      "country": "singapore",
+      "address": "Royal street",
+      "gender": "female"
+    },
+    {
+      "id": "Ananya",
+      "name": "G",
+      "password": "Ananya@13",
+      "email": "ananya@gmail.com",
+      "phone": "9003759065",
+      "country": "India",
+      "address": "Thiruporur Chennai",
+      "gender": "female"
+    },
+    {
+      "id": "Ashika",
+      "name": "k",
+      "password": "Ashika@13",
+      "email": "ashika@gmail.com",
+      "phone": "9003759065",
+      "country": "India",
+      "address": "Hyderabad",
+      "gender": "female"
+    },
+    {
+      "id": "Swethwa",
+      "name": "K",
+      "password": "Swetha@13",
+      "email": "swetha@gmail.com",
+      "phone": "9003759065",
+      "country": "India",
+      "address": "Aspire Systems",
       "gender": "female"
     }
   ],
@@ -457,6 +517,12 @@
       "productname": "React and Native",
       "Date": "24/02/2023",
       "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
     }
   ],
   "orderDetails": [
@@ -1765,34 +1831,100 @@
       "id": 116
     },
     {
-      "rname": 3,
-      "imgdata": "https://m.media-amazon.com/images/I/91NMKdqMaWL._AC_UY436_FMwebp_QL65_.jpg",
-      "address": "Angel Jessy",
+      "rname": 2,
+      "imgdata": "https://m.media-amazon.com/images/I/61acdiPRZQL._AC_SR405,405_.jpg",
+      "address": "Adam Boduch",
       "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
-      "somedata": "1050 + order placed from here recently",
-      "price": 210,
-      "rating": "4.0",
-      "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
-      "qnty": 1,
-      "useremail": "dhiya@gmail.com",
-      "productname": "Science and Technology",
-      "Date": "01/03/2023",
-      "id": 130
-    },
-    {
-      "rname": 4,
-      "imgdata": "https://images-eu.ssl-images-amazon.com/images/I/61oRH4y27jL._AC_UL320_SR320,320_.jpg",
-      "address": "Gayle Laakmann",
-      "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
-      "somedata": " 300 + order placed from here recently",
-      "price": 380,
+      "somedata": " 1175 + order placed from here recently",
+      "price": 350,
       "rating": "3.8",
       "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
       "qnty": 1,
       "useremail": "dhiya@gmail.com",
-      "productname": "Coding Interview",
-      "Date": "01/03/2023",
-      "id": 131
+      "productname": "React and Native",
+      "Date": "02/03/2023",
+      "id": 137
+    },
+    {
+      "id": 138
+    },
+    {
+      "id": 139
+    },
+    {
+      "id": 140
+    },
+    {
+      "id": 141
+    },
+    {
+      "id": 142
+    },
+    {
+      "id": 143
+    },
+    {
+      "id": 144
+    },
+    {
+      "id": 145
+    },
+    {
+      "id": 146
+    },
+    {
+      "id": 147
+    },
+    {
+      "id": 148
+    },
+    {
+      "id": 149
+    },
+    {
+      "id": 150
+    },
+    {
+      "id": 151
+    },
+    {
+      "id": 152
+    },
+    {
+      "id": 153
+    },
+    {
+      "id": 154
+    },
+    {
+      "id": 155
+    },
+    {
+      "id": 156
+    },
+    {
+      "id": 157
+    },
+    {
+      "id": 158
+    },
+    {
+      "id": 159
+    },
+    {
+      "id": 160
+    },
+    {
+      "id": 161
+    },
+    {
+      "id": 162
+    },
+    {
+      "id": 163
+    },
+    {
+      "id": 164
     }
   ]
 }

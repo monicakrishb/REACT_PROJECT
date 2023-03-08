@@ -39,7 +39,7 @@ function Checkout() {
   const navigate = useNavigate();
   const Update = async () => {
     zero == 0 ? setZero(1) : setZero(0);
-    register
+    await register
       .checkid(instanceid, {
         id: instanceid,
         name: instanceusername,

@@ -60,14 +60,7 @@ const Register = () => {
   const initPwdInput = async (childData) => {
     initRobustPassword(childData);
   };
-  // const onSubmit = async (e) => {
-  //   try {
-  //     e.preventDefault();
-  //     e.persist();
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // };
+
   const IsValidate = () => {
     let isproceed = true;
     let errormessage = " please enter the value in";

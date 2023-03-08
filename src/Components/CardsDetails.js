@@ -7,10 +7,8 @@ import register from "../services/API";
 
 const CardsDetails = () => {
   const [data, setData] = useState([]);
-  // console.log(data);
 
   const { id } = useParams();
-  // console.log(id);
 
   const getData = async () => {
     try {
@@ -18,7 +16,7 @@ const CardsDetails = () => {
       setData(res);
       console.log(res);
     } catch (err) {
-      toast.warning("no action")
+      toast.warning("no action");
     }
   };
   useEffect(() => {
