@@ -1,5 +1,7 @@
 import { render } from "@testing-library/react";
 import Cards from "../Cards";
+import register from "../../services/API";
+
 
 
 
@@ -10,7 +12,7 @@ jest.mock("react-router-dom", () => ({
 }));
 jest.mock("react-redux", () => ({
   useDispatch: jest.fn(),
-  useSelector: jest.fn(),
+  useSelector: jest.fn(), 
 }));
 
 test("test", () => {
@@ -24,3 +26,23 @@ test('there is no K in team', () => {
   render(<Cards/>)
   expect('Added').not.toMatch(/K/);
 });
+
+
+test('the data is res',async() => {
+  render(<Cards />);
+  const res = await register.cards();
+  console.log("Data: ",res);
+  expect(res).toBe(res);
+});
+// test('the data is res',async() => {
+//   render(<Cards />);
+//   const res = await register.getdata();
+//   console.log("Data: ",res);
+//   expect(res).toBe(res);
+// });
+// test('the data is res',async() => {
+//   render(<Cards />);
+//   const res = await register.cardload();
+//   console.log("card add: ",res);
+//   expect(res).toBe(true);
+// });

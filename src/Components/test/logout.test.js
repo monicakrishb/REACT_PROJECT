@@ -12,4 +12,4 @@ jest.mock("react-redux", () => ({
 
 test("test", () => {
   render(<Logout />);
-});
+});  

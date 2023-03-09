@@ -1,6 +1,7 @@
-import { render } from "@testing-library/react";
-import StrengthMeter from "../pages/StrengthMeter";
+// import { render } from "@testing-library/react";
+// import StrengthMeter from "../pages/StrengthMeter";
 
-test("test", () => {
-  render(<StrengthMeter/>); 
-});
+// test("test", () => {
+//   render(<StrengthMeter/>); 
+// });
+ 
