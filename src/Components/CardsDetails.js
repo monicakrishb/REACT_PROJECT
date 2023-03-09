@@ -9,7 +9,7 @@ const CardsDetails = () => {
   const [data, setData] = useState([]);
 
   const { id } = useParams();
-
+console.log(id,useParams()); 
   const getData = async () => {
     try {
       const res = (await register.details()).data;

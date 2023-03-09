@@ -1,11 +1,11 @@
 import axios from "axios";
 class HttpService {
   environment = process.env.REACT_APP_ENV;
-  registerpost = async (regobj) => {
-    return await axios.post(this.environment + "/user", regobj);
+  registerpost = (regobj) => {
+    return axios.post(this.environment + "/user", regobj);
   };
-  loginpost = async (username) => {
-    return await axios.get(this.environment + `/user?email=${username}`);
+  loginpost = (username) => {
+    return axios.get(this.environment + `/user?email=${username}`);
   };
   profileget = (store) => {
     return axios.get(this.environment + `/user?email=${store}`);
@@ -57,6 +57,12 @@ class HttpService {
   };
   placedelete = (id) => {
     return axios.delete(this.environment + "/cartdetails/" + id);
+  };
+  order = () => {
+    return axios.get(this.environment + "/orderDetails");
+  };
+  orderid = (id) => {
+    return axios.delete(this.environment + "/orderDetails/" + id);
   };
 }
 const register = new HttpService();

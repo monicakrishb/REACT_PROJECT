@@ -93,11 +93,11 @@ const Register = () => {
 
     return isproceed;
   };
-  const handlesubmit = (e) => {
+  const handlesubmit = async (e) => {
     e.preventDefault();
     let regobj = { id, name, password, email, phone, country, address, gender };
     if (IsValidate()) {
-      register
+      await register
         .registerpost(regobj)
         .then((res) => {
           toast.success("registered successfully");

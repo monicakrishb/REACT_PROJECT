@@ -10,11 +10,11 @@ export default function Login() {
   const [username, usernameupdate] = useState("");
   const [password, passwordupdate] = useState("");
   const usenavigate = useNavigate();
-  const ProceedLogin = (e) => {
+  const ProceedLogin = async (e) => {
     e.preventDefault();
     if (validate(username, password)) {
       try {
-        register.loginpost(username).then((response) => {
+        await register.loginpost(username).then((response) => {
           console.log(response.data[0].password);
 
           if (Object.keys(response.data).length === 0) {

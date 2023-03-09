@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import "./Order.css";
+import register from "../../services/API";
 
 function Orders() {
   const [orderdata, setOrderdata] = useState([]);
@@ -11,7 +12,7 @@ function Orders() {
   }, []);
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/orderDetails");
+      const res = register.order;
       setOrderdata(res.data);
     } catch (err) {
       console.log("No action");
@@ -19,8 +20,8 @@ function Orders() {
   };
   const store = sessionStorage.getItem("useremail");
 
-  async function Deleteorder(id) {
-    await axios.delete("http://localhost:8000/orderDetails/" + id);
+  async function Deleteorder() {
+    await register.orderid;
     getData();
   }
 
