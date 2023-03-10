@@ -16,8 +16,9 @@ const Cards = () => {
   const store = sessionStorage.getItem("useremail");
   const dispatch = useDispatch();
   const getData = async () => {
-    const res = (await register.cards()).data;
+    const res = (await register.cards()).data ;
     const getdata = (await register.getdata()).data;
+    // console.log(res);
     res &&
       res.forEach((i, index) => {
         getdata.forEach((j) => {
@@ -25,8 +26,8 @@ const Cards = () => {
             res[index].added = true;
           }
         });
-      });
-    console.log(res);
+      }); 
+    console.log(res); 
     setData(res);
     setLoading(true);
   };
@@ -76,7 +77,8 @@ const Cards = () => {
           data.map((element, id) => {
             return (
               <>
-                <Card
+                <Card 
+                  key={id}
                   style={{ width: "22rem", border: "none" }}
                   className="mx-2 mt-4 card_style"
                 >
@@ -92,6 +94,7 @@ const Cards = () => {
                     <Card.Text>Price : ₹ {element.price}</Card.Text>
                     <div className="button_div d-flex justify-content-center text-center">
                       <Button
+                      data-testid={"addme"}
                         variant="primary"
                         onClick={() => {
                           send(element);

@@ -34,7 +34,7 @@ function Checkout() {
   const [instancepassword, setinstancepassword] = useState("");
   const [instanceaddress, setinstanceaddress] = useState("");
   const [instancegender, setinstancegender] = useState("");
-
+console.log(data)
   const navigate = useNavigate();
   const Update = async () => {
     zero == 0 ? setZero(1) : setZero(0);
@@ -78,7 +78,7 @@ function Checkout() {
           return e;
         }
       })
-      .map((e) =>
+      .map((e) => 
         register.checkorder({
           rname: e.id,
           imgdata: e.imgdata,

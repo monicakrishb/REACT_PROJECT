@@ -1,7 +1,7 @@
-// import { render } from "@testing-library/react";
-// import Orders from "../Order/Order";
+import { render } from "@testing-library/react";
+import Orders from "../Order/Order";
 
-// test("test", () => {
-//   render(<Orders/>); 
-// });
+test("test", () => {
+  render(<Orders/>); 
+});
  

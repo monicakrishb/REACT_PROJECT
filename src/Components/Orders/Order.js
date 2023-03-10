@@ -12,16 +12,17 @@ function Orders() {
   }, []);
   const getData = async () => {
     try {
-      const res = register.order;
+      const res = await register.order();
       setOrderdata(res.data);
     } catch (err) {
       console.log("No action");
     }
   };
+  
   const store = sessionStorage.getItem("useremail");
 
-  async function Deleteorder() {
-    await register.orderid;
+  async function Deleteorder(id) {
+    await register.orderid(id);
     getData();
   }
 

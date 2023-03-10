@@ -1,21 +1,28 @@
-// import { render, screen } from "@testing-library/react";
-// import { MemoryRouter } from "react-router-dom";
-// import Register from "../pages/Register";
-// import { fireEvent } from "@testing-library/react";
-// jest.mock("axios");
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import Register from "../pages/Register";
+import { fireEvent } from "@testing-library/react";
+jest.mock("axios");
 
-// const mockedUsedNavigate = jest.fn();
-// jest.mock("react-router-dom", () => ({
-//   ...jest.requireActual("react-router-dom"),
-//   useNavigate: () => mockedUsedNavigate,
-// })); 
-// describe("Register component", () => {
-//   it("should render Register component correctly", () => {
-//     render(<Register />);
-//     const element = screen.getByRole("heading");
-//     expect(element).toBeInTheDocument();
-//   });  
-// });
+const mockedUsedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({                                                                                                              
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockedUsedNavigate,
+})); 
+describe("Register component", () => {
+  it("should render Register component correctly", () => {
+    render(<Register />);
+    const element = screen.getByRole("heading");
+    expect(element).toBeInTheDocument();
+  });  
+});
+describe("handlesubmit", () => {
+  it("should render handlesubmit", () => {
+    render(<Register/>);
+  });                                                                                   
+});
+ 
+
 // describe("<Register/>", () => {
 //   test("render name input", () => {
 //     render(
@@ -89,7 +96,4 @@
 //   fireEvent.change(inputElement4, { target: { value: "Dhanush" } });
 //   expect(screen.getByTestId("username-test")).toHaveValue("Dhanush");
 // });
-// test('there is no T in team', () => {
-//   render(<Register/>)
-//   expect('Registered').not.toMatch(/T/);
-// });
+

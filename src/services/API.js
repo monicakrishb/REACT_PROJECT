@@ -49,8 +49,8 @@ class HttpService {
   checkid = (instanceid, data) => {
     return axios.put(this.environment + `/user/${instanceid}`, data);
   };
-  checkorder = async () => {
-    return await axios.post(this.environment + "/orderDetails");
+  checkorder = async (data) => {
+    return await axios.post(this.environment + "/orderDetails",data);
   };
   placeorder = () => {
     return axios.get(this.environment + "/cartDetails");
@@ -65,5 +65,5 @@ class HttpService {
     return axios.delete(this.environment + "/orderDetails/" + id);
   };
 }
-const register = new HttpService();
+const   register = new HttpService();
 export default register;
