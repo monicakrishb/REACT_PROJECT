@@ -50,6 +50,7 @@ export const Placeorder = () => {
       />
       <h6 style={{ marginLeft: "45%" }}>Order is confirmed </h6>
       <button
+        data-testid={"deleteme"}
         className="btn btn-primary"
         onClick={Delete}
         style={{ marginLeft: "40%" }}

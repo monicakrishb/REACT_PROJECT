@@ -54,6 +54,7 @@ export default function Login() {
               <input
                 value={username}
                 data-testId="username-test"
+                placeholder="Enter email"
                 onChange={(e) => usernameupdate(e.target.value)}
                 className="form-control"
               ></input>

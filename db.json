@@ -1,16 +1,6 @@
 {
   "user": [
     {
-      "id": "Thiya",
-      "name": "Thiyageshwari",
-      "password": "12345",
-      "email": "thiya@gmail.com",
-      "phone": "1234567890",
-      "country": "",
-      "address": "1 st street",
-      "gender": "female"
-    },
-    {
       "id": "monica",
       "name": "monicakrish",
       "password": "monica",
@@ -38,16 +28,6 @@
       "phone": "9003759065",
       "country": "",
       "address": "1/597",
-      "gender": "female"
-    },
-    {
-      "id": "sai",
-      "name": "saipallavi",
-      "password": "123",
-      "email": "sai@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "kalyani street",
       "gender": "female"
     },
     {
@@ -89,16 +69,6 @@
       "country": "India",
       "address": "moni",
       "gender": "male"
-    },
-    {
-      "id": "Teju",
-      "name": "Teju",
-      "password": "1234",
-      "email": "teju@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "Teju street",
-      "gender": "female"
     },
     {
       "id": "Tyson",
@@ -151,156 +121,6 @@
       "gender": "male"
     },
     {
-      "id": "Hamsa",
-      "name": "Hamsa",
-      "password": "Hamsa@2023",
-      "email": "Hamsa@gmail.com",
-      "phone": "9003759065",
-      "country": "singapore",
-      "address": "Siruseri",
-      "gender": "male"
-    },
-    {
-      "id": "Sivasankar",
-      "name": "Sivasankar sekar",
-      "password": "Sivasankar@13",
-      "email": "sivasankar@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "Aspire system",
-      "gender": "male"
-    },
-    {
-      "id": "Prashanth",
-      "name": "Prashanth",
-      "password": "Prashanth@11",
-      "email": "prashanth@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "chennai",
-      "gender": "male"
-    },
-    {
-      "id": "Dillibai",
-      "name": "Dillibai",
-      "password": "Dillibai@13",
-      "email": "dillibai@gmail.com",
-      "phone": "9444755834",
-      "country": "India",
-      "address": "1/26 Adhanur guduvancherry chennai",
-      "gender": "female"
-    },
-    {
-      "id": "Vijay",
-      "name": "Vijay",
-      "password": "Vijay@13",
-      "email": "vi",
-      "phone": "09003759065",
-      "country": "India",
-      "address": "1/596 MGR nagar , Mookandapalli Hosur\n1/596 MGR nagar , Mookandapalli Hosur\n635126",
-      "gender": "female"
-    },
-    {
-      "id": "Monica",
-      "name": "Monica",
-      "password": "Monica@13",
-      "email": "monica@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "Aspire",
-      "gender": "female"
-    },
-    {
-      "id": "Sharmila",
-      "name": "R",
-      "password": "Sharmi@13",
-      "email": "sharmi@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "Aspire",
-      "gender": "female"
-    },
-    {
-      "id": "Sindhuja",
-      "name": "K",
-      "password": "Sindhu@13",
-      "email": "sindhu@gmail.com",
-      "phone": "9442872165",
-      "country": "India",
-      "address": "Mgr nagar",
-      "gender": "female"
-    },
-    {
-      "id": "Srimathi",
-      "name": "S",
-      "password": "Srimathi@13",
-      "email": "srimathi@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "Siruseri",
-      "gender": "female"
-    },
-    {
-      "id": "Simathi",
-      "name": "S",
-      "password": "Srimathi@13",
-      "email": "srimathi@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "Siruseri",
-      "gender": "female"
-    },
-    {
-      "id": "Simath",
-      "name": "S",
-      "password": "Srimathi@13",
-      "email": "srimathi@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "Siruseri",
-      "gender": "female"
-    },
-    {
-      "id": "Moni",
-      "name": "K",
-      "password": "Moni@13",
-      "email": "monicakri475@gmail.com",
-      "phone": "09003759065",
-      "country": "India",
-      "address": "1/596 MGR nagar , Mookandapalli Hosur\n1/596 MGR nagar , Mookandapalli Hosur\n635126",
-      "gender": "female"
-    },
-    {
-      "id": "Abinaya",
-      "name": "P",
-      "password": "Abi@13",
-      "email": "abi@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "Thillai nagar,hosur-635126",
-      "gender": "female"
-    },
-    {
-      "id": "Monic",
-      "name": "k",
-      "password": "xedxdx2123112D1VVV@",
-      "email": "monicakri475@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "\n\n635126",
-      "gender": "female"
-    },
-    {
-      "id": "soni",
-      "name": "K",
-      "password": "Soni@13",
-      "email": "monicakri475@gmail.com",
-      "phone": "09003759065",
-      "country": "India",
-      "address": "1/596 MGR nagar , Mookandapalli Hosur\n\n635126",
-      "gender": "female"
-    },
-    {
       "id": "Dhiya",
       "name": "K",
       "password": "Dhiya@13",
@@ -331,63 +151,13 @@
       "gender": "female"
     },
     {
-      "id": "Lilly",
+      "id": "Pooja",
       "name": "S",
-      "password": "Lilly@13",
-      "email": "lilly@gmail.com",
+      "password": "Pooja@13",
+      "email": "pooja@gmail.com",
       "phone": "9003759065",
       "country": "India",
-      "address": "Sipcot Chennai",
-      "gender": "female"
-    },
-    {
-      "id": "Manikandan",
-      "name": "A",
-      "password": "Mani@13",
-      "email": "mani@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "Adhanur chennai",
-      "gender": "male"
-    },
-    {
-      "id": "Lakshitha",
-      "name": "L",
-      "password": "Lakshitha@13",
-      "email": "lakshitha@gmail.com",
-      "phone": "9003759065",
-      "country": "singapore",
-      "address": "Royal street",
-      "gender": "female"
-    },
-    {
-      "id": "Ananya",
-      "name": "G",
-      "password": "Ananya@13",
-      "email": "ananya@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "Thiruporur Chennai",
-      "gender": "female"
-    },
-    {
-      "id": "Ashika",
-      "name": "k",
-      "password": "Ashika@13",
-      "email": "ashika@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "Hyderabad",
-      "gender": "female"
-    },
-    {
-      "id": "Swethwa",
-      "name": "K",
-      "password": "Swetha@13",
-      "email": "swetha@gmail.com",
-      "phone": "9003759065",
-      "country": "India",
-      "address": "Aspire Systems",
+      "address": "Karnataka",
       "gender": "female"
     }
   ],
@@ -547,6 +317,38 @@
       "useremail": "kural@gmail.com",
       "pid": 1,
       "id": 2
+    },
+    {
+      "rname": 3,
+      "imgdata": "https://m.media-amazon.com/images/I/61acdiPRZQL._AC_SR405,405_.jpg",
+      "address": "Adam Boduch",
+      "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+      "somedata": " 1175 + order placed from here recently",
+      "price": 350,
+      "rating": "3.8",
+      "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
+      "qnty": 2,
+      "useremail": "pooja@gmail.com",
+      "username": null,
+      "productname": "React and Native",
+      "Date": "13/03/2023",
+      "id": 3
+    },
+    {
+      "rname": 3,
+      "imgdata": "https://m.media-amazon.com/images/I/61acdiPRZQL._AC_SR405,405_.jpg",
+      "address": "Adam Boduch",
+      "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+      "somedata": " 1175 + order placed from here recently",
+      "price": 350,
+      "rating": "3.8",
+      "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
+      "qnty": 2,
+      "useremail": "dhiya@gmail.com",
+      "username": null,
+      "productname": "React and Native",
+      "Date": "13/03/2023",
+      "id": 4
     }
   ]
 }
