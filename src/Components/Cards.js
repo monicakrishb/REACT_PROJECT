@@ -15,9 +15,8 @@ const Cards = () => {
   const store = sessionStorage.getItem("useremail");
   const dispatch = useDispatch();
   const getData = async () => {
-    const res = (await register.cards()).data;
+    const res = (await register.cardsget()).data;
     const getdata = (await register.getdata()).data;
-    // console.log(res);
     res &&
       res.forEach((i, index) => {
         getdata.forEach((j) => {
@@ -26,7 +25,6 @@ const Cards = () => {
           }
         });
       });
-    console.log(res);
     setData(res);
     setLoading(true);
   };
@@ -35,9 +33,6 @@ const Cards = () => {
     getData();
   }, [getdatas]);
 
-  useEffect(() => {
-    getData();
-  }, []);
   const storeemail = sessionStorage.getItem("useremail");
 
   const Add = async (element) => {
@@ -60,7 +55,6 @@ const Cards = () => {
   const navigate = useNavigate();
   const loadData = async () => {
     const response = (await register.cardload()).data;
-    console.log("value", response);
     dispatch(setCount(response));
   };
 

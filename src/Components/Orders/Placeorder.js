@@ -41,9 +41,9 @@ export const Placeorder = () => {
   };
   return (
     <div>
+      {/* <br />
       <br />
-      <br />
-      <br />
+      <br /> */}
       <img
         src={require("./../assert/correcttick.gif")}
         style={{ width: "400px", height: "400px", marginLeft: "35%" }}

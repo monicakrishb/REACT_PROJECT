@@ -29,27 +29,34 @@ export default function Home() {
           <h2 className="Featured">Top Featured Products</h2>
           <div className="container">
             <div className="box1">
+
+          <a href="http://localhost:3000/cart/10">
+
               <img
                 src="https://rukminim1.flixcart.com/image/416/416/kk1h5e80/book/k/f/i/na-muthukumar-kavithaigal-original-imafzgyygfezv3xp.jpeg?q=70"
                 alt="Product 1"
-              />
+              /></a>
+          <a href="http://localhost:3000/cart/11">
 
               <img
                 src="https://m.media-amazon.com/images/I/71uiZa-tiOL._AC_UY436_FMwebp_QL65_.jpg"
                 alt="Product 1"
-              />
+              /></a>
             </div>
 
             <div className="box2">
+          <a href="http://localhost:3000/cart/12">
+
               <img
                 src="https://m.media-amazon.com/images/I/71rG+07lipL.jpg"
                 alt="Product 2"
-              />
+              /></a>
+          <a href="http://localhost:3000/cart/13">
 
               <img
                 src="https://m.media-amazon.com/images/I/61lPNVMaLmL._AC_UY436_FMwebp_QL65_.jpg"
                 alt="Product 1"
-              />
+              /></a>
             </div>
           </div>
         </aside>
@@ -57,6 +64,7 @@ export default function Home() {
       <div className="viralBooks">
         <h3 data-testid="todo-1">Trending Books</h3>
         <div className="bookDiv">
+      
           <img
             src="https://img.buzzfeed.com/buzzfeed-static/static/2020-08/23/14/asset/b8ac59c43a18/sub-buzz-10353-1598192887-1.jpg"
             alt=""

@@ -3,5 +3,5 @@ import StrengthMeter from "../pages/StrengthMeter";
 
 test("test", () => {
   render(<StrengthMeter/>); 
-});
+}); 
  

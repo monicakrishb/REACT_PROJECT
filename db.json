@@ -159,6 +159,36 @@
       "country": "India",
       "address": "Karnataka",
       "gender": "female"
+    },
+    {
+      "id": "Kavya",
+      "name": "S",
+      "password": "Kavya@13",
+      "email": "kavya@gmail.com",
+      "phone": "9003759065",
+      "country": "India",
+      "address": "Vellore,Ranipettai",
+      "gender": "female"
+    },
+    {
+      "id": "Mahima",
+      "name": "S",
+      "password": "Mahi",
+      "email": "mahima@gmail.com",
+      "phone": "9003759065",
+      "country": "India",
+      "address": "Aspire system ",
+      "gender": "female"
+    },
+    {
+      "id": "Thenral",
+      "name": "S",
+      "password": "Thenral@3",
+      "email": "thenral@gmail.com",
+      "phone": "9003759065",
+      "country": "India",
+      "address": "Poonamalle",
+      "gender": "female"
     }
   ],
   "bookDetails": [
@@ -247,18 +277,6 @@
       "qnty": 1
     },
     {
-      "id": 8,
-      "rname": "Web Design",
-      "imgdata": "https://m.media-amazon.com/images/I/61h2OIQCu6L._AC_SR405,405_.jpg",
-      "address": "Philippe Hong",
-      "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
-      "somedata": "500 + order placed from here recently",
-      "price": 720,
-      "rating": "3.2",
-      "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
-      "qnty": 0
-    },
-    {
       "id": 9,
       "rname": "System Design",
       "imgdata": "https://m.media-amazon.com/images/I/4129HxbBnOL._AC_SF480,480_.jpg",
@@ -266,6 +284,54 @@
       "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
       "somedata": "2525 + order placed from here recently",
       "price": 590,
+      "rating": "3.8",
+      "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
+      "qnty": 0
+    },
+    {
+      "id": 10,
+      "rname": "Na Muthukumar kavithaigal",
+      "imgdata": "https://rukminim1.flixcart.com/image/416/416/kk1h5e80/book/k/f/i/na-muthukumar-kavithaigal-original-imafzgyygfezv3xp.jpeg?q=70",
+      "address": "Adam Boduch",
+      "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+      "somedata": " 1175 + order placed from here recently",
+      "price": 350,
+      "rating": "3.8",
+      "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
+      "qnty": 0
+    },
+    {
+      "id": 11,
+      "rname": "Na Muthukumar biography",
+      "imgdata": "https://m.media-amazon.com/images/I/71uiZa-tiOL._AC_UY436_FMwebp_QL65_.jpg",
+      "address": "Adam Boduch",
+      "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+      "somedata": " 1175 + order placed from here recently",
+      "price": 350,
+      "rating": "3.8",
+      "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
+      "qnty": 0
+    },
+    {
+      "id": 12,
+      "rname": "Vairamuthu biography",
+      "imgdata": "https://m.media-amazon.com/images/I/71rG+07lipL.jpg",
+      "address": "Adam Boduch",
+      "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+      "somedata": " 1175 + order placed from here recently",
+      "price": 350,
+      "rating": "3.8",
+      "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
+      "qnty": 0
+    },
+    {
+      "id": 13,
+      "rname": "Last world War",
+      "imgdata": "https://m.media-amazon.com/images/I/61lPNVMaLmL._AC_UY436_FMwebp_QL65_.jpg",
+      "address": "Adam Boduch",
+      "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+      "somedata": " 1175 + order placed from here recently",
+      "price": 350,
       "rating": "3.8",
       "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
       "qnty": 0
@@ -298,9 +364,9 @@
       "rating": "3.8",
       "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
       "qnty": 1,
-      "useremail": "kural@gmail.com",
+      "useremail": "kavya@gmail.com",
       "pid": 1,
-      "id": 2
+      "id": 4
     }
   ],
   "orderDetails": [
@@ -335,7 +401,7 @@
       "id": 3
     },
     {
-      "rname": 3,
+      "rname": 4,
       "imgdata": "https://m.media-amazon.com/images/I/61acdiPRZQL._AC_SR405,405_.jpg",
       "address": "Adam Boduch",
       "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
@@ -344,11 +410,43 @@
       "rating": "3.8",
       "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
       "qnty": 2,
-      "useremail": "dhiya@gmail.com",
+      "useremail": "kavya@gmail.com",
       "username": null,
       "productname": "React and Native",
-      "Date": "13/03/2023",
+      "Date": "14/03/2023",
       "id": 4
+    },
+    {
+      "rname": 4,
+      "imgdata": "https://m.media-amazon.com/images/I/61acdiPRZQL._AC_SR405,405_.jpg",
+      "address": "Adam Boduch",
+      "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+      "somedata": " 1175 + order placed from here recently",
+      "price": 350,
+      "rating": "3.8",
+      "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
+      "qnty": 2,
+      "useremail": "kavya@gmail.com",
+      "username": null,
+      "productname": "React and Native",
+      "Date": "14/03/2023",
+      "id": 5
+    },
+    {
+      "rname": 6,
+      "imgdata": "https://images-eu.ssl-images-amazon.com/images/I/61cVyOcKJ7L._AC_UL320_SR320,320_.jpg",
+      "address": "David Herron",
+      "delimg": "https://b.zmtcdn.com/data/o2_assets/0b07ef18234c6fdf9365ad1c274ae0631612687510.png?output-format=webp",
+      "somedata": "2525+order placed from here recently",
+      "price": 75,
+      "rating": "3.9",
+      "arrimg": "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
+      "qnty": 4,
+      "useremail": "mahima@gmail.com",
+      "username": null,
+      "productname": "Node.js ",
+      "Date": "14/03/2023",
+      "id": 7
     }
   ]
 }

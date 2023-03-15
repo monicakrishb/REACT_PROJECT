@@ -4,16 +4,16 @@ class HttpService {
   registerpost = (regobj) => {
     return axios.post(this.environment + "/user", regobj);
   };
-  loginpost = (username) => {
+  loginget = (username) => {
     return axios.get(this.environment + `/user?email=${username}`);
   };
   profileget = (store) => {
     return axios.get(this.environment + `/user?email=${store}`);
   };
-  profileupdate = (instanceid, data) => {
+  profileput = (instanceid, data) => {
     return axios.put(this.environment + `/user/${instanceid}`, data);
   };
-  cards = () => {
+  cardsget = () => {
     return axios.get(this.environment + "/bookDetails");
   };
   getdata = () => {
@@ -25,7 +25,7 @@ class HttpService {
   cardload = () => {
     return axios.get(this.environment + "/cartDetails");
   };
-  details = () => {
+  detailsget = () => {
     return axios.get(this.environment + "/bookDetails");
   };
   cart = () => {
@@ -50,7 +50,7 @@ class HttpService {
     return axios.put(this.environment + `/user/${instanceid}`, data);
   };
   checkorder = async (data) => {
-    return await axios.post(this.environment + "/orderDetails",data);
+    return await axios.post(this.environment + "/orderDetails", data);
   };
   placeorder = () => {
     return axios.get(this.environment + "/cartDetails");
@@ -65,5 +65,5 @@ class HttpService {
     return axios.delete(this.environment + "/orderDetails/" + id);
   };
 }
-const   register = new HttpService();
+const register = new HttpService();
 export default register;

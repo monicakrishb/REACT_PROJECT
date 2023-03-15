@@ -14,9 +14,7 @@ export default function Login() {
     e.preventDefault();
     if (validate(username, password)) {
       try {
-        await register.loginpost(username).then((response) => {
-          console.log(response.data[0].password);
-
+        await register.loginget(username).then((response) => {
           if (Object.keys(response.data).length === 0) {
             toast.error("Please enter valid username");
           } else {
@@ -35,7 +33,7 @@ export default function Login() {
         toast.error("Login Failed due to:" + err.message);
       }
     } else {
-      toast.warning("Please enter username and password");
+      toast.warning("Please enter useremail and password");
     }
   };
 

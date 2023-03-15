@@ -12,29 +12,6 @@ jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: () => mockedUsedNavigate,
 }));
-// jest.mock("react-redux", () => ({
-//   useDispatch: jest.fn(),
-//   useSelector: jest.fn(),
-// }));
-
-// test("test", () => {
-//   render(<Cards />);
-// });
-// test('there is no T in team', () => {
-//   render(<Cards/>)
-//   expect('Add to Cart').not.toMatch(/T/);
-// });
-// test('there is no K in team', () => {
-//   render(<Cards/>)
-//   expect('Added').not.toMatch(/K/);
-// });
-
-// test('the data is res',async() => {
-//   render(<Cards />);
-//   const res = await register.cards();
-//   console.log("Data: ",res);
-//   expect(res).toBe(res);
-// });
 
 const book = [
   {
@@ -197,14 +174,13 @@ const cart = "cartDetails"[
 test("async check", async () => {
   const mock = new MockAdapter(axios);
   mock.onGet("http://localhost:8000/bookDetails").reply(200, book);
-  //   mock.onGet("http://localhost:8000/cartDetails").reply(200, cart);
   mock.onGet("http://localhost:8000/cartDetails").reply(200, book);
   mock.onPost("http://localhost:8000/cartDetails").reply(200, [{}]);
   render(
     <Router.MemoryRouter>
       <Provider store={Store}>
-        <Cards />
-      </Provider>
+        <Cards /> 
+      </Provider>  
     </Router.MemoryRouter>
   );
   await act(() => {});

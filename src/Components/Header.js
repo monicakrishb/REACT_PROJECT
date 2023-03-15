@@ -26,7 +26,6 @@ const Header = () => {
   const loadData = async () => {
     const response = (await register.cart()).data;
     setProductdata(response);
-    console.log("value", response);
     dispatch(setCount(response));
   };
 

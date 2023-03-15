@@ -5,27 +5,27 @@
 form {
   position: absolute;
   /* top: 50%; */
-  left:30%;
+  left: 30%;
   margin-top: 200px;
 }
-.login{
+.login {
   padding: 10px;
- width: 600px;
- display: flex;
- align-items: center;
- flex-direction: column;
- justify-content: center;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
-  .errmsg {
+.errmsg {
   color: red;
 }
-#new{
- height: 37px;
- margin-top: 19px;
+#new {
+  height: 37px;
+  margin-top: 19px;
 }
-#table{
+#table {
   right: 140px;
- position: relative;
- bottom: 200px;
+  position: relative;
+  bottom: 200px;
 }

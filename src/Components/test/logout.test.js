@@ -8,7 +8,7 @@ jest.mock("react-router-dom", () => ({
 }));
 jest.mock("react-redux", () => ({
   useDispatch: jest.fn(),
-}));
+})); 
 
 test("test", () => {
   render(<Logout />);

@@ -4,5 +4,5 @@ describe("Register component", () => {
   it("should render Home component correctly", () => {
     render(<Home />);
   }); 
-});
+}); 
  

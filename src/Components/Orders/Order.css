@@ -23,9 +23,8 @@
   margin: 10px;
   height: 270px;
   display: flex;
-  /* justify-content:center; */
+
   align-items: center;
-  /* width: 800px; */
 }
 #cancel {
   margin-left: 500px;

@@ -46,7 +46,7 @@ const Profile = () => {
   const Update = async () => {
     const [instanceimg, setinstanceimg] = useState("");
     await register
-      .profileupdate(instanceid, {
+      .profileput(instanceid, {
         id: instanceid,
         name: instanceusername,
         password: instancepassword,
